@@ -1,5 +1,5 @@
 require 'test_helper'
-require 'connection_test'
+require 'unit/connection_test'
 
 class ConnectionProxyTest < ConnectionTest
   def setup
