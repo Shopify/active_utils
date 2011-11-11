@@ -12,6 +12,9 @@ module ActiveMerchant
     RETRY_SAFE = false
     RUBY_184_POST_HEADERS = { "Content-Type" => "application/x-www-form-urlencoded" }
 
+    cattr_accessor  :proxy
+    cattr_reader    :http_class
+
     attr_accessor :endpoint
     attr_accessor :open_timeout
     attr_accessor :read_timeout
@@ -25,6 +28,9 @@ module ActiveMerchant
     attr_accessor :ignore_http_status
 
     def initialize(endpoint)
+      @@proxy       = @@proxy.is_a?(URI) ? @@proxy : URI.parse(@@proxy) if @@proxy
+      @@http_class  = @@proxy ? Net::HTTP::Proxy(@@proxy.host, @@proxy.port) : Net::HTTP
+
       @endpoint     = endpoint.is_a?(URI) ? endpoint : URI.parse(endpoint)
       @open_timeout = OPEN_TIMEOUT
       @read_timeout = READ_TIMEOUT
@@ -72,7 +78,7 @@ module ActiveMerchant
 
     private
     def http
-      http = Net::HTTP.new(endpoint.host, endpoint.port)
+      http = @@http_class.new(endpoint.host, endpoint.port)
       configure_debugging(http)
       configure_timeouts(http)
       configure_ssl(http)
