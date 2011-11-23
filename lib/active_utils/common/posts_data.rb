@@ -31,7 +31,7 @@ module ActiveMerchant #:nodoc:
     end
 
     def raw_ssl_request(method, endpoint, data, headers = {})
-      connection = Connection.new(endpoint)
+      connection = new_connection(endpoint)
       connection.open_timeout = open_timeout
       connection.read_timeout = read_timeout
       connection.retry_safe   = retry_safe
@@ -49,6 +49,10 @@ module ActiveMerchant #:nodoc:
     end
 
     private
+
+    def new_connection(endpoint)
+      Connection.new(endpoint)
+    end
 
     def handle_response(response)
       case response.code.to_i
