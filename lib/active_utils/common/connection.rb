@@ -48,6 +48,12 @@ module ActiveMerchant
             when :post
               debug body
               http.post(endpoint.request_uri, body, RUBY_184_POST_HEADERS.merge(headers))
+            when :delete
+              # It's kind of ambiguous whether the RFC allows bodies
+              # for DELETE requests. But Net::HTTP's delete method
+              # very unambiguously does not.
+              raise ArgumentError, "DELETE requests do not support a request body" if body
+              http.delete(endpoint.request_uri, headers)
             else
               raise ArgumentError, "Unsupported request method #{method.to_s.upcase}"
             end
