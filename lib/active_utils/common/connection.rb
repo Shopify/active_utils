@@ -48,6 +48,9 @@ module ActiveMerchant
             when :post
               debug body
               http.post(endpoint.request_uri, body, RUBY_184_POST_HEADERS.merge(headers))
+            when :put
+              debug body
+              http.put(endpoint.request_uri, body, headers)
             else
               raise ArgumentError, "Unsupported request method #{method.to_s.upcase}"
             end
