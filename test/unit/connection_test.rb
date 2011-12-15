@@ -37,6 +37,12 @@ class ConnectionTest < Test::Unit::TestCase
     assert_equal 'success', response.body
   end
 
+  def test_successful_put_request
+    Net::HTTP.any_instance.expects(:put).with('/tx.php', 'data', {}).returns(@ok)
+    response = @connection.request(:put, 'data', {})
+    assert_equal 'success', response.body
+  end
+
   def test_get_raises_argument_error_if_passed_data
     assert_raise(ArgumentError) do
       @connection.request(:get, 'data', {})
