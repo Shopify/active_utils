@@ -43,6 +43,12 @@ class ConnectionTest < Test::Unit::TestCase
     assert_equal 'success', response.body
   end
 
+  def test_successful_delete_request
+    Net::HTTP.any_instance.expects(:delete).with('/tx.php', {}).returns(@ok)
+    response = @connection.request(:delete, nil, {})
+    assert_equal 'success', response.body
+  end
+
   def test_get_raises_argument_error_if_passed_data
     assert_raise(ArgumentError) do
       @connection.request(:get, 'data', {})
@@ -51,7 +57,7 @@ class ConnectionTest < Test::Unit::TestCase
 
   def test_request_raises_when_request_method_not_supported
     assert_raise(ArgumentError) do
-      @connection.request(:delete, nil, {})
+      @connection.request(:head, nil, {})
     end
   end
 
