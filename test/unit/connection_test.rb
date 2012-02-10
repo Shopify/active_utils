@@ -7,6 +7,7 @@ class ConnectionTest < Test::Unit::TestCase
 
     @endpoint   = 'https://example.com/tx.php'
     @connection = ActiveMerchant::Connection.new(@endpoint)
+    @connection.logger = stub(:info => nil, :debug => nil, :error => nil)
   end
 
   def test_connection_endpoint_parses_string_to_uri
@@ -26,6 +27,7 @@ class ConnectionTest < Test::Unit::TestCase
   end
 
   def test_successful_get_request
+    @connection.logger.expects(:info).twice
     Net::HTTP.any_instance.expects(:get).with('/tx.php', {}).returns(@ok)
     response = @connection.request(:get, nil, {})
     assert_equal 'success', response.body
@@ -87,6 +89,7 @@ class ConnectionTest < Test::Unit::TestCase
   end
 
   def test_unrecoverable_exception
+    @connection.logger.expects(:error).once
     Net::HTTP.any_instance.expects(:post).raises(EOFError)
 
     assert_raises(ActiveMerchant::ConnectionError) do
@@ -95,6 +98,7 @@ class ConnectionTest < Test::Unit::TestCase
   end
 
   def test_failure_then_success_with_recoverable_exception
+    @connection.logger.expects(:error).never
     Net::HTTP.any_instance.expects(:post).times(2).raises(Errno::ECONNREFUSED).then.returns(@ok)
 
     assert_nothing_raised do
@@ -103,6 +107,7 @@ class ConnectionTest < Test::Unit::TestCase
   end
 
   def test_failure_limit_reached
+    @connection.logger.expects(:error).once
     Net::HTTP.any_instance.expects(:post).times(ActiveMerchant::Connection::MAX_RETRIES).raises(Errno::ECONNREFUSED)
 
     assert_raises(ActiveMerchant::ConnectionError) do
@@ -133,6 +138,7 @@ class ConnectionTest < Test::Unit::TestCase
   end
 
   def test_failure_with_ssl_certificate
+    @connection.logger.expects(:error).once
     Net::HTTP.any_instance.expects(:post).raises(OpenSSL::X509::CertificateError)
 
     assert_raises(ActiveMerchant::ClientCertificateError) do
