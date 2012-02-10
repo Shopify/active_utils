@@ -72,6 +72,7 @@ module ActiveMerchant
         rescue Errno::ECONNREFUSED => e
           raise RetriableConnectionError, "The remote server refused the connection"
         rescue OpenSSL::X509::CertificateError => e
+          error(e.message, tag)
           raise ClientCertificateError, "The remote server did not accept the provided SSL certificate"
         rescue Timeout::Error, Errno::ETIMEDOUT => e
           raise ConnectionError, "The connection to the remote server timed out"
@@ -131,9 +132,10 @@ module ActiveMerchant
         retries -= 1
         retry unless retries.zero?
         raise ConnectionError, e.message
-      rescue ConnectionError
+      rescue ConnectionError => e
         retries -= 1
         retry if retry_safe && !retries.zero?
+        error(e.message, tag)
         raise
       end
     end
@@ -157,6 +159,10 @@ module ActiveMerchant
 
     def info(message, tag = nil)
       log(:info, message, tag)
+    end
+
+    def error(message, tag = nil)
+      log(:error, message, tag)
     end
 
     def log(level, message, tag)
