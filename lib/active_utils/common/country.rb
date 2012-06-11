@@ -275,7 +275,7 @@ module ActiveMerchant #:nodoc:
       { :alpha2 => 'SE', :name => 'Sweden', :alpha3 => 'SWE', :numeric => '752' },
       { :alpha2 => 'CH', :name => 'Switzerland', :alpha3 => 'CHE', :numeric => '756' },
       { :alpha2 => 'SY', :name => 'Syrian Arab Republic', :alpha3 => 'SYR', :numeric => '760' },
-      { :alpha2 => 'TW', :name => 'Taiwan, Province of China', :alpha3 => 'TWN', :numeric => '158' },
+      { :alpha2 => 'TW', :name => 'Taiwan', :alpha3 => 'TWN', :numeric => '158' },
       { :alpha2 => 'TJ', :name => 'Tajikistan', :alpha3 => 'TJK', :numeric => '762' },
       { :alpha2 => 'TZ', :name => 'Tanzania, United Republic of', :alpha3 => 'TZA', :numeric => '834' },
       { :alpha2 => 'TH', :name => 'Thailand', :alpha3 => 'THA', :numeric => '764' },
