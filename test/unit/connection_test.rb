@@ -88,6 +88,28 @@ class ConnectionTest < Test::Unit::TestCase
     assert_equal false, @connection.verify_peer
   end
 
+  def test_default_ca_file
+    assert_equal ActiveMerchant::Connection::CA_FILE, @connection.ca_file
+    assert_equal ActiveMerchant::Connection::CA_FILE, @connection.send(:http).ca_file
+  end
+
+  def test_override_ca_file
+    @connection.ca_file = "/bogus"
+    assert_equal "/bogus", @connection.ca_file
+    assert_equal "/bogus", @connection.send(:http).ca_file
+  end
+
+  def test_default_ca_path
+    assert_equal ActiveMerchant::Connection::CA_PATH, @connection.ca_path
+    assert_equal ActiveMerchant::Connection::CA_PATH, @connection.send(:http).ca_path
+  end
+
+  def test_override_ca_path
+    @connection.ca_path = "/bogus"
+    assert_equal "/bogus", @connection.ca_path
+    assert_equal "/bogus", @connection.send(:http).ca_path
+  end
+
   def test_unrecoverable_exception
     @connection.logger.expects(:error).once
     Net::HTTP.any_instance.expects(:post).raises(EOFError)
