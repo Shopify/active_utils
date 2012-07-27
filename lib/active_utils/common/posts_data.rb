@@ -31,6 +31,8 @@ module ActiveMerchant #:nodoc:
     end
 
     def raw_ssl_request(method, endpoint, data, headers = {})
+      logger.warn "#{self.class} using ssl_strict=false, which is insecure" if logger unless ssl_strict
+
       connection = new_connection(endpoint)
       connection.open_timeout = open_timeout
       connection.read_timeout = read_timeout
