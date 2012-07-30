@@ -10,12 +10,12 @@ class PostsDataTest < Test::Unit::TestCase
   end
 
   def setup
-    @poster = SSLPoster.new()
+    @poster = SSLPoster.new
   end
 
   def test_logger_warns_if_ssl_strict_disabled
     @poster.logger = stub()
-    @poster.logger.stubs(:warn).at_least_once
+    @poster.logger.expects(:warn).with("PostsDataTest::SSLPoster using ssl_strict=false, which is insecure")
 
     Connection.any_instance.stubs(:request)
 
