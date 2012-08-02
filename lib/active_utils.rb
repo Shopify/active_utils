@@ -3,6 +3,7 @@ require 'active_support/core_ext/hash/conversions'
 require 'active_support/core_ext/class/attribute'
 
 module ActiveMerchant
+  autoload :NetworkConnectionRetries,  'active_utils/common/network_connection_retries'
   autoload :Connection,                'active_utils/common/connection'
   autoload :Country,                   'active_utils/common/country'
   autoload :CountryCode,               'active_utils/common/country'
