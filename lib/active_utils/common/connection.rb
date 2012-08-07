@@ -5,6 +5,8 @@ require 'benchmark'
 
 module ActiveMerchant
   class Connection
+    include NetworkConnectionRetries
+
     MAX_RETRIES = 3
     OPEN_TIMEOUT = 60
     READ_TIMEOUT = 60
@@ -16,7 +18,6 @@ module ActiveMerchant
     attr_accessor :open_timeout
     attr_accessor :read_timeout
     attr_accessor :verify_peer
-    attr_accessor :retry_safe
     attr_accessor :pem
     attr_accessor :pem_password
     attr_accessor :wiredump_device
@@ -34,7 +35,7 @@ module ActiveMerchant
     end
 
     def request(method, body, headers = {})
-      retry_exceptions do
+      retry_exceptions(:max_retries => MAX_RETRIES, :logger => logger, :tag => tag) do
         begin
           info "#{method.to_s.upcase} #{endpoint}", tag
 
@@ -65,17 +66,6 @@ module ActiveMerchant
           info "--> %d %s (%d %.4fs)" % [result.code, result.message, result.body ? result.body.length : 0, realtime], tag
           debug result.body
           result
-        rescue EOFError => e
-          raise ConnectionError, "The remote server dropped the connection"
-        rescue Errno::ECONNRESET => e
-          raise ConnectionError, "The remote server reset the connection"
-        rescue Errno::ECONNREFUSED => e
-          raise RetriableConnectionError, "The remote server refused the connection"
-        rescue OpenSSL::X509::CertificateError => e
-          error(e.message, tag)
-          raise ClientCertificateError, "The remote server did not accept the provided SSL certificate"
-        rescue Timeout::Error, Errno::ETIMEDOUT => e
-          raise ConnectionError, "The connection to the remote server timed out"
         end
       end
     end
@@ -121,23 +111,6 @@ module ActiveMerchant
         http.key = OpenSSL::PKey::RSA.new(pem, pem_password)
       else
         http.key = OpenSSL::PKey::RSA.new(pem)
-      end
-    end
-
-    def retry_exceptions
-      retries = MAX_RETRIES
-      begin
-        yield
-      rescue RetriableConnectionError => e
-        retries -= 1
-        retry unless retries.zero?
-        error(e.message, tag)
-        raise ConnectionError, e.message
-      rescue ConnectionError => e
-        retries -= 1
-        retry if retry_safe && !retries.zero?
-        error(e.message, tag)
-        raise
       end
     end
 
