@@ -12,3 +12,4 @@ Active Utils extracts commonly used modules and classes used by [Active Merchant
 * RequiresParameters - helper method to ensure the required parameters are passed in
 * Utils - common utils such as uid generator
 * Validateable - module used for making models validateable
+* NetworkConnectionRetries - module for retrying network connections when connection errors occur
