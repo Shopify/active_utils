@@ -35,9 +35,11 @@ module ActiveMerchant
     end
 
     def request(method, body, headers = {})
+      request_start = Time.now.to_f
+
       retry_exceptions(:max_retries => MAX_RETRIES, :logger => logger, :tag => tag) do
         begin
-          info "#{method.to_s.upcase} #{endpoint}", tag
+          info "connection_http_method=#{method.to_s.upcase} connection_uri=#{endpoint}", tag
 
           result = nil
 
@@ -68,6 +70,9 @@ module ActiveMerchant
           result
         end
       end
+
+    ensure
+      info "connection_request_total_time=%.4fs" % [Time.now.to_f - request_start], tag
     end
 
     private

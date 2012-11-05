@@ -32,19 +32,23 @@ module ActiveMerchant
     private
 
     def retry_network_exceptions(options = {})
-      retries = options[:max] || DEFAULT_RETRIES
+      initial_retries = options[:max] || DEFAULT_RETRIES
+      retries = initial_retries
+      request_start = nil
 
       begin
+        request_start = Time.now.to_f
         yield
       rescue ActiveMerchant::RetriableConnectionError => e
         retries -= 1
+
+        log_with_retry_details(options[:logger], initial_retries-retries, Time.now.to_f - request_start, e.message, options[:tag])
         retry unless retries.zero?
-        NetworkConnectionRetries.log(options[:logger], :error, e.message, options[:tag])
         raise ActiveMerchant::ConnectionError, e.message
       rescue ActiveMerchant::ConnectionError => e
         retries -= 1
+        log_with_retry_details(options[:logger], initial_retries-retries, Time.now.to_f - request_start, e.message, options[:tag])
         retry if (options[:retry_safe] || retry_safe) && !retries.zero?
-        NetworkConnectionRetries.log(options[:logger], :error, e.message, options[:tag])
         raise
       end
     end
@@ -53,6 +57,11 @@ module ActiveMerchant
       tag ||= self.class.to_s
       message = "[#{tag}] #{message}"
       logger.send(level, message) if logger
+    end
+
+    private
+    def log_with_retry_details(logger, attempts, time, message, tag)
+      NetworkConnectionRetries.log(logger, :info, "connection_attempt=%d connection_request_time=%.4fs connection_msg=\"%s\"" % [attempts, time, message], tag)
     end
   end
 end
