@@ -23,7 +23,7 @@ class NetworkConnectionRetriesTest < Test::Unit::TestCase
   end
 
   def test_unrecoverable_exception_logged_if_logger_provided
-    @logger.expects(:error).once
+    @logger.expects(:info).once
     assert_raises(ActiveMerchant::ConnectionError) do
       retry_exceptions :logger => @logger do
         raise EOFError
@@ -52,7 +52,7 @@ class NetworkConnectionRetriesTest < Test::Unit::TestCase
   end
 
   def test_failure_limit_reached_logs_final_error
-    @logger.expects(:error).once
+    @logger.expects(:info).times(3)
     @requester.expects(:post).times(ActiveMerchant::NetworkConnectionRetries::DEFAULT_RETRIES).raises(Errno::ECONNREFUSED)
 
     assert_raises(ActiveMerchant::ConnectionError) do
