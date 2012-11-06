@@ -89,7 +89,7 @@ class ConnectionTest < Test::Unit::TestCase
   end
 
   def test_unrecoverable_exception
-    @connection.logger.expects(:error).once
+    @connection.logger.expects(:info).once
     Net::HTTP.any_instance.expects(:post).raises(EOFError)
 
     assert_raises(ActiveMerchant::ConnectionError) do
@@ -98,7 +98,7 @@ class ConnectionTest < Test::Unit::TestCase
   end
 
   def test_failure_then_success_with_recoverable_exception
-    @connection.logger.expects(:error).never
+    @connection.logger.expects(:info).never
     Net::HTTP.any_instance.expects(:post).times(2).raises(Errno::ECONNREFUSED).then.returns(@ok)
 
     assert_nothing_raised do
@@ -107,7 +107,7 @@ class ConnectionTest < Test::Unit::TestCase
   end
 
   def test_failure_limit_reached
-    @connection.logger.expects(:error).once
+    @connection.logger.expects(:info).once
     Net::HTTP.any_instance.expects(:post).times(ActiveMerchant::Connection::MAX_RETRIES).raises(Errno::ECONNREFUSED)
 
     assert_raises(ActiveMerchant::ConnectionError) do
