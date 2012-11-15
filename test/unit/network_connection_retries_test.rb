@@ -72,6 +72,18 @@ class NetworkConnectionRetriesTest < Test::Unit::TestCase
     end
   end
 
+  def test_failure_then_success_logs_success
+    @logger.expects(:info).with(regexp_matches(/dropped/))
+    @logger.expects(:info).with(regexp_matches(/success/))
+    @requester.expects(:post).times(2).raises(EOFError).then.returns(@ok)
+
+    assert_nothing_raised do
+      retry_exceptions(:logger => @logger, :retry_safe => true) do
+        @requester.post
+      end
+    end
+  end
+
   def test_mixture_of_failures_with_retry_safe_enabled
     @requester.expects(:post).times(3).raises(Errno::ECONNRESET).
                                        raises(Errno::ECONNREFUSED).

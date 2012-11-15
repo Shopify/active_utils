@@ -38,7 +38,9 @@ module ActiveMerchant
 
       begin
         request_start = Time.now.to_f
-        yield
+        result = yield
+        log_with_retry_details(options[:logger], initial_retries-retries + 1, Time.now.to_f - request_start, "success", options[:tag])
+        result
       rescue ActiveMerchant::RetriableConnectionError => e
         retries -= 1
 
