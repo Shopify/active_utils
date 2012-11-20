@@ -14,6 +14,9 @@ module ActiveMerchant #:nodoc:
       base.superclass_delegating_accessor :read_timeout
       base.read_timeout = 60
 
+      base.superclass_delegating_accessor :max_retries
+      base.max_retries = Connection::MAX_RETRIES
+
       base.superclass_delegating_accessor :logger
       base.superclass_delegating_accessor :wiredump_device
     end
@@ -39,6 +42,7 @@ module ActiveMerchant #:nodoc:
       connection.retry_safe   = retry_safe
       connection.verify_peer  = ssl_strict
       connection.logger       = logger
+      connection.max_retries  = max_retries
       connection.tag          = self.class.name
       connection.wiredump_device = wiredump_device
 

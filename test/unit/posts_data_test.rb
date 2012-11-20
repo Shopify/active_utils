@@ -13,6 +13,29 @@ class PostsDataTest < Test::Unit::TestCase
     @poster = SSLPoster.new
   end
 
+  def test_ssl_request_retried_three_times_by_default
+    requester = stubs(:requester)
+    requester.expects(:post).raises(Errno::ECONNREFUSED).times(3)
+    Connection.any_instance.stubs(:http => requester)
+
+    assert_raises ActiveMerchant::ConnectionError do
+      @poster.raw_ssl_request(:post, "https://shopify.com", "", {})
+    end
+  end
+
+  def test_ssl_request_never_retried_if_max_retries_set
+    SSLPoster.max_retries = 1
+    requester = stubs(:requester)
+    requester.expects(:post).raises(Errno::ECONNREFUSED).times(1)
+    Connection.any_instance.stubs(:http => requester)
+
+    assert_raises ActiveMerchant::ConnectionError do
+      @poster.raw_ssl_request(:post, "https://shopify.com", "", {})
+    end
+  ensure
+    SSLPoster.max_retries = ActiveMerchant::Connection::MAX_RETRIES
+  end
+
   def test_logger_warns_if_ssl_strict_disabled
     @poster.logger = stub()
     @poster.logger.expects(:warn).with("PostsDataTest::SSLPoster using ssl_strict=false, which is insecure")
