@@ -32,7 +32,7 @@ module ActiveMerchant
     private
 
     def retry_network_exceptions(options = {})
-      initial_retries = options[:max] || DEFAULT_RETRIES
+      initial_retries = options[:max_retries] || DEFAULT_RETRIES
       retries = initial_retries
       request_start = nil
 

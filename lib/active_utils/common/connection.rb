@@ -29,6 +29,7 @@ module ActiveMerchant
     attr_accessor :logger
     attr_accessor :tag
     attr_accessor :ignore_http_status
+    attr_accessor :max_retries
 
     def initialize(endpoint)
       @endpoint     = endpoint.is_a?(URI) ? endpoint : URI.parse(endpoint)
@@ -38,13 +39,14 @@ module ActiveMerchant
       @verify_peer  = VERIFY_PEER
       @ca_file      = CA_FILE
       @ca_path      = CA_PATH
+      @max_retries  = MAX_RETRIES
       @ignore_http_status = false
     end
 
     def request(method, body, headers = {})
       request_start = Time.now.to_f
 
-      retry_exceptions(:max_retries => MAX_RETRIES, :logger => logger, :tag => tag) do
+      retry_exceptions(:max_retries => max_retries, :logger => logger, :tag => tag) do
         begin
           info "connection_http_method=#{method.to_s.upcase} connection_uri=#{endpoint}", tag
 

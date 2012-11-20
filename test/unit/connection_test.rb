@@ -63,7 +63,11 @@ class ConnectionTest < Test::Unit::TestCase
     end
   end
 
-
+  def test_override_max_retries
+    assert_not_equal 1, @connection.max_retries
+    @connection.max_retries = 1
+    assert_equal 1, @connection.max_retries
+  end
 
   def test_default_read_timeout
     assert_equal ActiveMerchant::Connection::READ_TIMEOUT, @connection.read_timeout
