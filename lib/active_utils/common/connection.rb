@@ -20,6 +20,7 @@ module ActiveMerchant
     attr_accessor :open_timeout
     attr_accessor :read_timeout
     attr_accessor :verify_peer
+    attr_accessor :ssl_version
     attr_accessor :ca_file
     attr_accessor :ca_path
     attr_accessor :retry_safe
@@ -41,6 +42,7 @@ module ActiveMerchant
       @ca_path      = CA_PATH
       @max_retries  = MAX_RETRIES
       @ignore_http_status = false
+      @ssl_version = false
     end
 
     def request(method, body, headers = {})
@@ -107,6 +109,7 @@ module ActiveMerchant
       return unless endpoint.scheme == "https"
 
       http.use_ssl = true
+      http.ssl_version = ssl_version if ssl_version
 
       if verify_peer
         http.verify_mode = OpenSSL::SSL::VERIFY_PEER
@@ -115,6 +118,7 @@ module ActiveMerchant
       else
         http.verify_mode = OpenSSL::SSL::VERIFY_NONE
       end
+
     end
 
     def configure_cert(http)

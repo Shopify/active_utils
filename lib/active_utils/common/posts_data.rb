@@ -5,6 +5,9 @@ module ActiveMerchant #:nodoc:
       base.superclass_delegating_accessor :ssl_strict
       base.ssl_strict = true
 
+      base.superclass_delegating_accessor :ssl_version
+      base.ssl_version = false
+
       base.class_attribute :retry_safe
       base.retry_safe = false
 
@@ -41,6 +44,7 @@ module ActiveMerchant #:nodoc:
       connection.read_timeout = read_timeout
       connection.retry_safe   = retry_safe
       connection.verify_peer  = ssl_strict
+      connection.ssl_version  = ssl_version
       connection.logger       = logger
       connection.max_retries  = max_retries
       connection.tag          = self.class.name
