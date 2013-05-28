@@ -69,6 +69,12 @@ class ConnectionTest < Test::Unit::TestCase
     assert_equal 1, @connection.max_retries
   end
 
+  def test_override_ssl_version
+    assert_not_equal :SSLv3, @connection.ssl_version
+    @connection.ssl_version = :SSLv3
+    assert_equal :SSLv3, @connection.ssl_version
+  end
+
   def test_default_read_timeout
     assert_equal ActiveMerchant::Connection::READ_TIMEOUT, @connection.read_timeout
   end
