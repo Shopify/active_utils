@@ -6,7 +6,7 @@ module ActiveMerchant #:nodoc:
       base.ssl_strict = true
 
       base.superclass_delegating_accessor :ssl_version
-      base.ssl_version = false
+      base.ssl_version = nil
 
       base.class_attribute :retry_safe
       base.retry_safe = false
