@@ -42,7 +42,7 @@ module ActiveMerchant
       @ca_path      = CA_PATH
       @max_retries  = MAX_RETRIES
       @ignore_http_status = false
-      @ssl_version = false
+      @ssl_version = nil
     end
 
     def request(method, body, headers = {})
