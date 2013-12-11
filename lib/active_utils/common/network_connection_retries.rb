@@ -23,6 +23,8 @@ module ActiveMerchant
         rescue OpenSSL::X509::CertificateError => e
           NetworkConnectionRetries.log(options[:logger], :error, e.message, options[:tag])
           raise ActiveMerchant::ClientCertificateError, "The remote server did not accept the provided SSL certificate"
+        rescue Zlib::BufError => e
+          raise ActiveMerchant::InvalidResponseError, "The remote server replied with an invalid response" 
         rescue *connection_errors.keys => e
           raise ActiveMerchant::ConnectionError, connection_errors[e.class]
         end
@@ -47,7 +49,7 @@ module ActiveMerchant
         log_with_retry_details(options[:logger], initial_retries-retries, Time.now.to_f - request_start, e.message, options[:tag])
         retry unless retries.zero?
         raise ActiveMerchant::ConnectionError, e.message
-      rescue ActiveMerchant::ConnectionError => e
+      rescue ActiveMerchant::ConnectionError, ActiveMerchant::InvalidResponseError => e
         retries -= 1
         log_with_retry_details(options[:logger], initial_retries-retries, Time.now.to_f - request_start, e.message, options[:tag])
         retry if (options[:retry_safe] || retry_safe) && !retries.zero?
