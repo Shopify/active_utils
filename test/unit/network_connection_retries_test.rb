@@ -22,6 +22,14 @@ class NetworkConnectionRetriesTest < Test::Unit::TestCase
     end
   end
 
+  def test_invalid_response_error
+    assert_raises(ActiveMerchant::InvalidResponseError) do
+      retry_exceptions do
+        raise Zlib::BufError
+      end
+    end
+  end
+
   def test_unrecoverable_exception_logged_if_logger_provided
     @logger.expects(:info).once
     assert_raises(ActiveMerchant::ConnectionError) do

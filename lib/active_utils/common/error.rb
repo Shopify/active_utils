@@ -23,4 +23,7 @@ module ActiveMerchant #:nodoc:
 
   class ClientCertificateError < ActiveMerchantError # :nodoc
   end
+
+  class InvalidResponseError < ActiveMerchantError # :nodoc
+  end
 end
