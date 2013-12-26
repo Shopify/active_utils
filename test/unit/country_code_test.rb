@@ -26,6 +26,6 @@ class CountryCodeTest < MiniTest::Unit::TestCase
   end
 
   def test_invalid_code_format
-    assert_raises(CountryCodeFormatError){ CountryCode.new('Canada') }
+    assert_raises(ActiveMerchant::CountryCodeFormatError){ CountryCode.new('Canada') }
   end
 end
