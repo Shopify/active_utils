@@ -1,3 +1,5 @@
+require 'timeout'
+
 module ActiveMerchant
   module NetworkConnectionRetries
     DEFAULT_RETRIES = 3
