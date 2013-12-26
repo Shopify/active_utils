@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ConnectionTest < Test::Unit::TestCase
+class ConnectionTest < MiniTest::Unit::TestCase
 
   def setup
     @ok = stub(:code => 200, :message => 'OK', :body => 'success')
@@ -52,25 +52,25 @@ class ConnectionTest < Test::Unit::TestCase
   end
 
   def test_get_raises_argument_error_if_passed_data
-    assert_raise(ArgumentError) do
+    assert_raises(ArgumentError) do
       @connection.request(:get, 'data', {})
     end
   end
 
   def test_request_raises_when_request_method_not_supported
-    assert_raise(ArgumentError) do
+    assert_raises(ArgumentError) do
       @connection.request(:head, nil, {})
     end
   end
 
   def test_override_max_retries
-    assert_not_equal 1, @connection.max_retries
+    refute_equal 1, @connection.max_retries
     @connection.max_retries = 1
     assert_equal 1, @connection.max_retries
   end
 
   def test_override_ssl_version
-    assert_not_equal :SSLv3, @connection.ssl_version
+    refute_equal :SSLv3, @connection.ssl_version
     @connection.ssl_version = :SSLv3
     assert_equal :SSLv3, @connection.ssl_version
   end
@@ -133,9 +133,7 @@ class ConnectionTest < Test::Unit::TestCase
     @connection.logger.expects(:info).never
     Net::HTTP.any_instance.expects(:post).times(2).raises(Errno::ECONNREFUSED).then.returns(@ok)
 
-    assert_nothing_raised do
-      @connection.request(:post, '')
-    end
+    assert_equal(@connection.request(:post, ''), @ok)
   end
 
   def test_failure_limit_reached
@@ -152,9 +150,7 @@ class ConnectionTest < Test::Unit::TestCase
 
     @connection.retry_safe = true
 
-    assert_nothing_raised do
-      @connection.request(:post, '')
-    end
+    assert_equal(@connection.request(:post, ''), @ok)
   end
 
   def test_mixture_of_failures_with_retry_safe_enabled

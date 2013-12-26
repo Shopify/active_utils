@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class CountryCodeTest < Test::Unit::TestCase
+class CountryCodeTest < MiniTest::Unit::TestCase
   def test_alpha2_country_code
     code = CountryCode.new('CA')
     assert_equal 'CA', code.value
@@ -26,6 +26,6 @@ class CountryCodeTest < Test::Unit::TestCase
   end
 
   def test_invalid_code_format
-    assert_raise(CountryCodeFormatError){ CountryCode.new('Canada') }
+    assert_raises(CountryCodeFormatError){ CountryCode.new('Canada') }
   end
 end

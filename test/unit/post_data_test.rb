@@ -4,7 +4,7 @@ class MyPost < ActiveMerchant::PostData
   self.required_fields = [ :ccnumber, :ccexp, :firstname, :lastname, :username, :password, :order_id, :key, :time ]
 end
 
-class PostDataTest < Test::Unit::TestCase
+class PostDataTest < MiniTest::Unit::TestCase
   def teardown
     ActiveMerchant::PostData.required_fields = []
   end

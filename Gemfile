@@ -13,4 +13,10 @@ else
   "~> #{rails_version}"
 end
 
+platforms :rbx do
+  gem 'rubysl', '~> 2.0'
+  gem 'minitest'
+  gem 'rubinius-developer_tools'
+end
+
 gem 'activesupport', rails
