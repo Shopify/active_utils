@@ -2,10 +2,11 @@ module ActiveMerchant
   module NetworkConnectionRetries
     DEFAULT_RETRIES = 3
     DEFAULT_CONNECTION_ERRORS = {
-      EOFError          => "The remote server dropped the connection",
-      Errno::ECONNRESET => "The remote server reset the connection",
-      Timeout::Error    => "The connection to the remote server timed out",
-      Errno::ETIMEDOUT  => "The connection to the remote server timed out"
+      EOFError               => "The remote server dropped the connection",
+      Errno::ECONNRESET      => "The remote server reset the connection",
+      Timeout::Error         => "The connection to the remote server timed out",
+      Errno::ETIMEDOUT       => "The connection to the remote server timed out",
+      OpenSSL::SSL::SSLError => "The SSL connection to the remote server could not be established"
     }
 
     def self.included(base)
