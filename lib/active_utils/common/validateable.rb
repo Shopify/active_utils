@@ -69,8 +69,12 @@ module ActiveMerchant #:nodoc:
           next if messages.blank?
           if key == 'base'
             result << "#{messages.first}"
-          else
+          elsif String.respond_to?(:humanize)
             result << "#{key.to_s.humanize} #{messages.first}"
+          else
+            humanized_key = key.to_s.dup
+            humanized_key = humanized_key.gsub(/_id$/, "").gsub(/_/, " ").capitalize
+            result << "#{humanized_key.to_s} #{messages.first}"
           end
         end
 

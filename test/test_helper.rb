@@ -5,8 +5,13 @@ require 'rubygems'
 require 'bundler'
 Bundler.setup
 
-require 'test/unit'
+require 'minitest/autorun'
 require 'active_utils'
-require 'mocha'
+require 'mocha/setup'
 
 include ActiveMerchant
+
+require 'active_support/version.rb'
+if ActiveSupport::VERSION::MAJOR < 3
+  require 'active_support/core_ext/object/blank.rb'
+end
