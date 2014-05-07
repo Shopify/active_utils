@@ -13,3 +13,4 @@ Active Utils extracts commonly used modules and classes used by [Active Merchant
 * Utils - common utils such as uid generator
 * Validateable - module used for making models validateable
 * NetworkConnectionRetries - module for retrying network connections when connection errors occur
+* CurrencyCode - ensure currency codes are ISO, and convert colloquial codes to ISO.

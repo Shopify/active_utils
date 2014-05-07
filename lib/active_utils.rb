@@ -17,4 +17,5 @@ module ActiveMerchant
   autoload :RequiresParameters,        'active_utils/common/requires_parameters'
   autoload :Utils,                     'active_utils/common/utils'
   autoload :Validateable,              'active_utils/common/validateable'
+  autoload :CurrencyCode,              'active_utils/common/currency_code'
 end
