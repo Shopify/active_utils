@@ -14,13 +14,13 @@ class CurrencyCodeTest < Test::Unit::TestCase
 
   def test_standardize_should_not_change_iso_currencies
     assert_equal 'CAD', CurrencyCode.standardize('CAD')
-    assert_equal 'USD', CurrencyCode.standardize('USD')
+    assert_equal 'USD', CurrencyCode.standardize('usd')
     assert_equal 'TWD', CurrencyCode.standardize('TWD')
   end
 
   def test_standardize_should_convert_known_non_iso_to_iso
     assert_equal 'TWD', CurrencyCode.standardize('NTD')
-    assert_equal 'CNY', CurrencyCode.standardize('RMB')
+    assert_equal 'CNY', CurrencyCode.standardize('rmb')
   end
 
   def test_standardize_should_raise_for_unknwon_currencies
