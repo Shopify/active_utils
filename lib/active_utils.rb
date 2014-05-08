@@ -1,6 +1,8 @@
 require 'active_support/core_ext/hash/indifferent_access'
 require 'active_support/core_ext/hash/conversions'
 require 'active_support/core_ext/class/attribute'
+require 'active_support/core_ext/object/blank'
+require 'active_support/inflector'
 
 module ActiveMerchant
   autoload :NetworkConnectionRetries,  'active_utils/common/network_connection_retries'
