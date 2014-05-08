@@ -28,4 +28,10 @@ class CurrencyCodeTest < Test::Unit::TestCase
       CurrencyCode.standardize('Not Real')
     end
   end
+
+  def test_nil_code_should_raise_InvalidCurrencyCodeError
+    assert_raise InvalidCurrencyCodeError do
+      CurrencyCode.standardize(nil)
+    end
+  end
 end

@@ -37,7 +37,7 @@ module ActiveMerchant
     }
 
     def self.standardize(code)
-      code = code.upcase
+      code = code.upcase unless code.nil?
 
       return code if is_iso?(code)
       NON_ISO_TO_ISO[code] || raise(InvalidCurrencyCodeError, "#{code} is not an ISO currency, nor can it be converted to one.")
