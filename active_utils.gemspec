@@ -10,6 +10,7 @@ Gem::Specification.new do |s|
   s.email       = ["developers@jadedpixel.com"]
   s.homepage    = "http://github.com/shopify/active_utils"
   s.summary     = %q{Common utils used by active_merchant, active_fulfillment, and active_shipping}
+  s.license     = 'MIT'
 
   s.rubyforge_project = "active_utils"
 
