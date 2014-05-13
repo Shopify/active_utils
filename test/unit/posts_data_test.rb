@@ -1,7 +1,7 @@
 require 'test_helper'
 require 'active_support/core_ext/class'
 
-class PostsDataTest < Test::Unit::TestCase
+class PostsDataTest < Minitest::Test
 
   class SSLPoster
     include PostsData

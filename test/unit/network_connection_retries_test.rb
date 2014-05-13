@@ -2,7 +2,7 @@ require 'test_helper'
 require 'openssl'
 require 'net/http'
 
-class NetworkConnectionRetriesTest < Test::Unit::TestCase
+class NetworkConnectionRetriesTest < Minitest::Test
   class MyNewError < StandardError
   end
 
@@ -42,10 +42,8 @@ class NetworkConnectionRetriesTest < Test::Unit::TestCase
   def test_failure_then_success_with_recoverable_exception
     @requester.expects(:post).times(2).raises(Errno::ECONNREFUSED).then.returns(@ok)
 
-    assert_nothing_raised do
-      retry_exceptions do
-        @requester.post
-      end
+    retry_exceptions do
+      @requester.post
     end
   end
 
@@ -73,10 +71,8 @@ class NetworkConnectionRetriesTest < Test::Unit::TestCase
   def test_failure_then_success_with_retry_safe_enabled
     @requester.expects(:post).times(2).raises(EOFError).then.returns(@ok)
 
-    assert_nothing_raised do
-      retry_exceptions :retry_safe => true do
-        @requester.post
-      end
+    retry_exceptions :retry_safe => true do
+      @requester.post
     end
   end
 
@@ -85,10 +81,8 @@ class NetworkConnectionRetriesTest < Test::Unit::TestCase
     @logger.expects(:info).with(regexp_matches(/success/))
     @requester.expects(:post).times(2).raises(EOFError).then.returns(@ok)
 
-    assert_nothing_raised do
-      retry_exceptions(:logger => @logger, :retry_safe => true) do
-        @requester.post
-      end
+    retry_exceptions(:logger => @logger, :retry_safe => true) do
+      @requester.post
     end
   end
 
