@@ -13,7 +13,7 @@ class Dood
 
 end
 
-class ValidateableTest < Test::Unit::TestCase
+class ValidateableTest < Minitest::Test
 
   def setup
     @dood = Dood.new
