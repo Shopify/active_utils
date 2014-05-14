@@ -6,6 +6,7 @@ module ActiveMerchant
       Errno::ECONNRESET      => "The remote server reset the connection",
       Timeout::Error         => "The connection to the remote server timed out",
       Errno::ETIMEDOUT       => "The connection to the remote server timed out",
+      SocketError            => "The connection to the remote server could not be established",
       OpenSSL::SSL::SSLError => "The SSL connection to the remote server could not be established"
     }
 
@@ -25,7 +26,7 @@ module ActiveMerchant
           NetworkConnectionRetries.log(options[:logger], :error, e.message, options[:tag])
           raise ActiveMerchant::ClientCertificateError, "The remote server did not accept the provided SSL certificate"
         rescue Zlib::BufError => e
-          raise ActiveMerchant::InvalidResponseError, "The remote server replied with an invalid response" 
+          raise ActiveMerchant::InvalidResponseError, "The remote server replied with an invalid response"
         rescue *connection_errors.keys => e
           raise ActiveMerchant::ConnectionError, connection_errors[e.class]
         end
