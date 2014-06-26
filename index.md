@@ -2,8 +2,6 @@
 layout: index
 ---
 
-# Active Utils
-
 Active Utils extracts commonly used modules and classes used by [Active Merchant](http://shopify.github.io/active_merchant), [Active Shipping](http://shopify.github.io/active_shipping), and [Active Fulfillment](http://shopify.github.io/active_fulfillment).
 
 ## Includes
