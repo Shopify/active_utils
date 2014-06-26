@@ -4,9 +4,9 @@ layout: index
 
 # Active Utils
 
-Active Utils extracts commonly used modules and classes used by [Active Merchant](http://github.com/Shopify/active_merchant), [Active Shipping](http://github.com/Shopify/active_shipping), and [Active Fulfillment](http://github.com/Shopify/active_fulfillment).
+Active Utils extracts commonly used modules and classes used by [Active Merchant](http://shopify.github.io/active_merchant), [Active Shipping](http://shopify.github.io/active_shipping), and [Active Fulfillment](http://shopify.github.io/active_fulfillment).
 
-### Includes
+## Includes
 
 * Connection - base class for making HTTP requests
 * Country - find countries mapped by name, country codes, and numeric values
@@ -18,3 +18,7 @@ Active Utils extracts commonly used modules and classes used by [Active Merchant
 * Validateable - module used for making models validateable
 * NetworkConnectionRetries - module for retrying network connections when connection errors occur
 * CurrencyCode - ensure currency codes are ISO, and convert colloquial codes to ISO.
+
+## License
+
+Unless otherwise noted, all code is released under the [MIT-LICENSE](http://opensource.org/licenses/MIT).
