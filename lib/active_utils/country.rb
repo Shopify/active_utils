@@ -1,7 +1,7 @@
 #!ruby19
 # encoding: utf-8
 
-module ActiveMerchant #:nodoc:
+module ActiveUtils #:nodoc:
   class InvalidCountryCodeError < StandardError
   end
 

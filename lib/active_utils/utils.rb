@@ -1,11 +1,10 @@
 require 'securerandom'
 
-module ActiveMerchant #:nodoc:
+module ActiveUtils #:nodoc:
   module Utils #:nodoc:
     def generate_unique_id
       SecureRandom.hex(16)
     end
-
     module_function :generate_unique_id
 
     def deprecated(message)
@@ -16,5 +15,6 @@ module ActiveMerchant #:nodoc:
         warn(warning)
       end
     end
+    module_function :deprecated
   end
 end

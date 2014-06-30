@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class Dood
-  include ActiveMerchant::Validateable
+  include ActiveUtils::Validateable
 
   attr_accessor :name, :email, :country
 

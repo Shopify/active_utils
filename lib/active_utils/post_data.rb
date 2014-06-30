@@ -1,6 +1,6 @@
 require 'cgi'
 
-module ActiveMerchant
+module ActiveUtils
   class PostData < Hash
     class_attribute :required_fields, :instance_writer => false
     self.required_fields = []

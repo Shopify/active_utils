@@ -1,4 +1,4 @@
-module ActiveMerchant #:nodoc:
+module ActiveUtils #:nodoc:
   module PostsData  #:nodoc:
 
     def self.included(base)

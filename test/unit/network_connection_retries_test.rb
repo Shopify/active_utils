@@ -74,7 +74,7 @@ class NetworkConnectionRetriesTest < Minitest::Test
   end
 
   def test_invalid_response_error
-    assert_raises(ActiveMerchant::InvalidResponseError) do
+    assert_raises(ActiveUtils::InvalidResponseError) do
       retry_exceptions do
         raise Zlib::BufError
       end
@@ -83,7 +83,7 @@ class NetworkConnectionRetriesTest < Minitest::Test
 
   def test_unrecoverable_exception_logged_if_logger_provided
     @logger.expects(:info).once
-    assert_raises(ActiveMerchant::ConnectionError) do
+    assert_raises(ActiveUtils::ConnectionError) do
       retry_exceptions :logger => @logger do
         raise EOFError
       end
@@ -99,9 +99,9 @@ class NetworkConnectionRetriesTest < Minitest::Test
   end
 
   def test_failure_limit_reached
-    @requester.expects(:post).times(ActiveMerchant::NetworkConnectionRetries::DEFAULT_RETRIES).raises(Errno::ECONNREFUSED)
+    @requester.expects(:post).times(ActiveUtils::NetworkConnectionRetries::DEFAULT_RETRIES).raises(Errno::ECONNREFUSED)
 
-    assert_raises(ActiveMerchant::ConnectionError) do
+    assert_raises(ActiveUtils::ConnectionError) do
       retry_exceptions do
         @requester.post
       end
@@ -110,9 +110,9 @@ class NetworkConnectionRetriesTest < Minitest::Test
 
   def test_failure_limit_reached_logs_final_error
     @logger.expects(:info).times(3)
-    @requester.expects(:post).times(ActiveMerchant::NetworkConnectionRetries::DEFAULT_RETRIES).raises(Errno::ECONNREFUSED)
+    @requester.expects(:post).times(ActiveUtils::NetworkConnectionRetries::DEFAULT_RETRIES).raises(Errno::ECONNREFUSED)
 
-    assert_raises(ActiveMerchant::ConnectionError) do
+    assert_raises(ActiveUtils::ConnectionError) do
       retry_exceptions(:logger => @logger) do
         @requester.post
       end
@@ -142,7 +142,7 @@ class NetworkConnectionRetriesTest < Minitest::Test
                                        raises(Errno::ECONNREFUSED).
                                        raises(EOFError)
 
-    assert_raises(ActiveMerchant::ConnectionError) do
+    assert_raises(ActiveUtils::ConnectionError) do
       retry_exceptions :retry_safe => true do
         @requester.post
       end
@@ -152,7 +152,7 @@ class NetworkConnectionRetriesTest < Minitest::Test
   def test_failure_with_ssl_certificate
     @requester.expects(:post).raises(OpenSSL::X509::CertificateError)
 
-    assert_raises(ActiveMerchant::ClientCertificateError) do
+    assert_raises(ActiveUtils::ClientCertificateError) do
       retry_exceptions do
         @requester.post
       end
@@ -163,7 +163,7 @@ class NetworkConnectionRetriesTest < Minitest::Test
     @logger.expects(:error).once
     @requester.expects(:post).raises(OpenSSL::X509::CertificateError)
 
-    assert_raises(ActiveMerchant::ClientCertificateError) do
+    assert_raises(ActiveUtils::ClientCertificateError) do
       retry_exceptions :logger => @logger do
         @requester.post
       end
@@ -173,7 +173,7 @@ class NetworkConnectionRetriesTest < Minitest::Test
   def test_failure_with_additional_exceptions_specified
     @requester.expects(:post).raises(MyNewError)
 
-    assert_raises(ActiveMerchant::ConnectionError) do
+    assert_raises(ActiveUtils::ConnectionError) do
       retry_exceptions :connection_exceptions => {MyNewError => "my message"} do
         @requester.post
       end
