@@ -1,14 +1,14 @@
-module ActiveMerchant #:nodoc:
-  class ActiveMerchantError < StandardError #:nodoc:
+module ActiveUtils #:nodoc:
+  class ActiveUtilsError < StandardError #:nodoc:
   end
 
-  class ConnectionError < ActiveMerchantError # :nodoc:
+  class ConnectionError < ActiveUtilsError # :nodoc:
   end
 
   class RetriableConnectionError < ConnectionError # :nodoc:
   end
 
-  class ResponseError < ActiveMerchantError # :nodoc:
+  class ResponseError < ActiveUtilsError # :nodoc:
     attr_reader :response
 
     def initialize(response, message = nil)
@@ -21,9 +21,9 @@ module ActiveMerchant #:nodoc:
     end
   end
 
-  class ClientCertificateError < ActiveMerchantError # :nodoc
+  class ClientCertificateError < ActiveUtilsError # :nodoc
   end
 
-  class InvalidResponseError < ActiveMerchantError # :nodoc
+  class InvalidResponseError < ActiveUtilsError # :nodoc
   end
 end
