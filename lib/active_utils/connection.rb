@@ -3,7 +3,7 @@ require 'net/http'
 require 'net/https'
 require 'benchmark'
 
-module ActiveMerchant
+module ActiveUtils
   class Connection
     include NetworkConnectionRetries
 

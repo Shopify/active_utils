@@ -18,7 +18,7 @@ class PostsDataTest < Minitest::Test
     requester.expects(:post).raises(Errno::ECONNREFUSED).times(3)
     Connection.any_instance.stubs(:http => requester)
 
-    assert_raises ActiveMerchant::ConnectionError do
+    assert_raises ActiveUtils::ConnectionError do
       @poster.raw_ssl_request(:post, "https://shopify.com", "", {})
     end
   end
@@ -29,11 +29,11 @@ class PostsDataTest < Minitest::Test
     requester.expects(:post).raises(Errno::ECONNREFUSED).times(1)
     Connection.any_instance.stubs(:http => requester)
 
-    assert_raises ActiveMerchant::ConnectionError do
+    assert_raises ActiveUtils::ConnectionError do
       @poster.raw_ssl_request(:post, "https://shopify.com", "", {})
     end
   ensure
-    SSLPoster.max_retries = ActiveMerchant::Connection::MAX_RETRIES
+    SSLPoster.max_retries = ActiveUtils::Connection::MAX_RETRIES
   end
 
   def test_logger_warns_if_ssl_strict_disabled
@@ -54,5 +54,5 @@ class PostsDataTest < Minitest::Test
     SSLPoster.ssl_strict = true
     @poster.raw_ssl_request(:post, "https://shopify.com", "", {})
   end
-  
+
 end

@@ -1,4 +1,4 @@
-module ActiveMerchant
+module ActiveUtils
   class InvalidCurrencyCodeError < StandardError
   end
 
