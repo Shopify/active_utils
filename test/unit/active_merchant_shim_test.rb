@@ -24,4 +24,24 @@ class ActiveMerchantShimTest < Minitest::Test
       assert_equal ActiveUtils::Utils, m::Utils
     end
   end
+
+  def test_old_requires_work
+    %w(
+      active_utils/common/connection
+      active_utils/common/country
+      active_utils/common/currency_code
+      active_utils/common/error
+      active_utils/common/network_connection_retries
+      active_utils/common/post_data
+      active_utils/common/posts_data
+      active_utils/common/requires_parameters
+      active_utils/common/utils
+      active_utils/common/validateable
+      active_utils/common/version
+    ).each do |path|
+      assert_deprecation_warning do
+        require path
+      end
+    end
+  end
 end

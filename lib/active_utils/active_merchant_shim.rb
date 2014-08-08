@@ -1,5 +1,8 @@
+require "active_utils/utils"
+
 module ActiveUtils
   MOVED_NAMESPACE_MESSAGE = "All active_utils models have been moved to the ActiveUtils namespace, but you have referenced one from the ActiveMerchant namespace. Doing so will be deprecated in active_utils 3.x."
+  MOVED_FILE_MESSAGE = "All active_utils model files have been moved out of the 'common' path, but you have attempted to require one via 'common'. Doing so will be deprecated in active_utils 3.x."
   MOVED_CONSTANTS = %w(
     NetworkConnectionRetries
     Connection
