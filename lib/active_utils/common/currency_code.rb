@@ -16,24 +16,25 @@ module ActiveMerchant
     ]
 
     NON_ISO_TO_ISO = {
-      "ARN" => "ARS",
-      "AZM" => "AZN",
-      "CHP" => "CLP",
-      "DHS" => "AED",
-      "ECD" => "XCD",
-      "GHC" => "GHS",
-      "JAD" => "JMD",
-      "JYE" => "JPY",
-      "KUD" => "KWD",
-      "MZM" => "MZN",
-      "NTD" => "TWD",
-      "NMP" => "MXN",
-      "RDD" => "DOP",
-      "RMB" => "CNY",
-      "SFR" => "CHF",
-      "SID" => "SGD",
-      "UKL" => "GBP",
-      "WON" => "KRW"
+      "ARN" => "ARS", # Argentinian Pesos
+      "AZM" => "AZN", # Azerbaijan New Manat
+      "CHP" => "CLP", # Chilean Pesos
+      "DHS" => "AED", # UAE Dirhams
+      "ECD" => "XCD", # East Caribbean Dollars
+      "GHC" => "GHS", # Ghana Cedi
+      "JAD" => "JMD", # Jamaican Dollars
+      "JYE" => "JPY", # Japanese Yen
+      "KUD" => "KWD", # Kuwaiti Dinars
+      "MZM" => "MZN", # Mozambique Metical
+      "NMP" => "MXN", # Mexican Pesos
+      "NTD" => "TWD", # New Taiwan Dollars / Taiwan New Dollars
+      "RDD" => "DOP", # Dominican Pesos
+      "RMB" => "CNY", # Chinese Renminbi
+      "SFR" => "CHF", # Swiss Francs
+      "SID" => "SGD", # Singapore Dollars
+      "SOL" => "PES", # Peruvian Sol
+      "UKL" => "GBP", # Great Britain Pounds
+      "WON" => "KRW"  # South Korean Won
     }
 
     def self.standardize(code)
