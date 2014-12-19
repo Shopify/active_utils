@@ -23,5 +23,3 @@ module ActiveUtils
   autoload :CurrencyCode,              'active_utils/currency_code'
   autoload :InvalidCurrencyCodeError,  'active_utils/currency_code'
 end
-
-autoload :ActiveMerchant, 'active_utils/active_merchant_shim'
