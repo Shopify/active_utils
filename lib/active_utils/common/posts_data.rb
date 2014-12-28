@@ -22,6 +22,9 @@ module ActiveMerchant #:nodoc:
 
       base.superclass_delegating_accessor :logger
       base.superclass_delegating_accessor :wiredump_device
+
+      base.superclass_delegating_accessor :proxy_address
+      base.superclass_delegating_accessor :proxy_port
     end
 
     def ssl_get(endpoint, headers={})
@@ -55,6 +58,9 @@ module ActiveMerchant #:nodoc:
       connection.pem_password = @options[:pem_password] if @options
 
       connection.ignore_http_status = @options[:ignore_http_status] if @options
+
+      connection.proxy_address = proxy_address
+      connection.proxy_port = proxy_port
 
       connection.request(method, data, headers)
     end
