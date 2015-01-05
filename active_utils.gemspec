@@ -14,10 +14,11 @@ Gem::Specification.new do |s|
 
   s.rubyforge_project = "active_utils"
 
-  s.add_dependency('activesupport', '>= 2.3.11')
+  s.add_dependency('activesupport', '>= 3.2')
   s.add_dependency('i18n')
 
   s.add_development_dependency('rake')
+  s.add_development_dependency('minitest')
   s.add_development_dependency('mocha')
 
   s.files         = `git ls-files`.split("\n")
