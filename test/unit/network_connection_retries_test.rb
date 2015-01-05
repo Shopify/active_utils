@@ -15,7 +15,7 @@ class NetworkConnectionRetriesTest < Minitest::Test
   end
 
   def test_unrecoverable_exception
-    assert_raises(ActiveUtils::ConnectionError) do
+    raised = assert_raises(ActiveUtils::ConnectionError) do
       retry_exceptions do
         raise EOFError
       end
@@ -24,7 +24,7 @@ class NetworkConnectionRetriesTest < Minitest::Test
   end
 
   def test_econnreset_raises_correctly
-    raised = assert_raises(ActiveMerchant::ConnectionError) do
+    raised = assert_raises(ActiveUtils::ConnectionError) do
       retry_exceptions do
         raise Errno::ECONNRESET
       end
@@ -39,7 +39,7 @@ class NetworkConnectionRetriesTest < Minitest::Test
     end
 
     exceptions.each do |exception|
-      raised = assert_raises(ActiveMerchant::ConnectionError) do
+      raised = assert_raises(ActiveUtils::ConnectionError) do
         retry_exceptions do
           raise exception
         end
@@ -49,7 +49,7 @@ class NetworkConnectionRetriesTest < Minitest::Test
   end
 
   def test_socket_error_raises_correctly
-    raised = assert_raises(ActiveMerchant::ConnectionError) do
+    raised = assert_raises(ActiveUtils::ConnectionError) do
       retry_exceptions do
         raise SocketError
       end
@@ -64,7 +64,7 @@ class NetworkConnectionRetriesTest < Minitest::Test
     end
 
     exceptions.each do |exception|
-      raised = assert_raises(ActiveMerchant::ConnectionError) do
+      raised = assert_raises(ActiveUtils::ConnectionError) do
         retry_exceptions do
           raise exception
         end

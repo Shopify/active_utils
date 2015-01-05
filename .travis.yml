@@ -3,7 +3,9 @@ language: ruby
 sudo: false
 
 rvm:
-  - 1.9.3
-  - 2.1.2
+  - 1.9
+  - 2.0
+  - 2.1
+  - 2.2
 
 script: bundle exec rake test
