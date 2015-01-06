@@ -19,7 +19,6 @@ module ActiveUtils
   autoload :PostData,                  'active_utils/post_data'
   autoload :PostsData,                 'active_utils/posts_data'
   autoload :RequiresParameters,        'active_utils/requires_parameters'
-  autoload :Utils,                     'active_utils/utils'
   autoload :Validateable,              'active_utils/validateable'
   autoload :CurrencyCode,              'active_utils/currency_code'
   autoload :InvalidCurrencyCodeError,  'active_utils/currency_code'
