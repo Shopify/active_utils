@@ -4,16 +4,8 @@ require 'mocha/setup'
 
 include ActiveUtils
 
-def suppress_warnings
-  original_verbosity, $VERBOSE = $VERBOSE, nil
-  yield
-ensure
-  $VERBOSE = original_verbosity
-end
-
-class Minitest::Test
-  def assert_deprecation_warning(message=nil)
-    ActiveUtils::Utils.expects(:deprecated).with(message ? message : anything)
-    yield
-  end
+# This makes sure that Minitest::Test exists when an older version of Minitest
+# (i.e. 4.x) is required by ActiveSupport.
+unless defined?(Minitest::Test)
+  Minitest::Test = MiniTest::Unit::TestCase
 end
