@@ -11,7 +11,7 @@ module ActiveUtils
     OPEN_TIMEOUT = 60
     READ_TIMEOUT = 60
     VERIFY_PEER = true
-    CA_FILE = (File.dirname(__FILE__) + '/../../certs/cacert.pem')
+    CA_FILE = (File.dirname(__FILE__) + '/../certs/cacert.pem')
     CA_PATH = nil
     RETRY_SAFE = false
     RUBY_184_POST_HEADERS = { "Content-Type" => "application/x-www-form-urlencoded" }
