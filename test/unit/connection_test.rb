@@ -10,6 +10,10 @@ class ConnectionTest < Minitest::Test
     @connection.logger = stub(:info => nil, :debug => nil, :error => nil)
   end
 
+  def test_path_to_cert_is_correct
+    assert File.exists?(ActiveUtils::Connection::CA_FILE)
+  end
+
   def test_connection_endpoint_parses_string_to_uri
     assert_equal URI.parse(@endpoint), @connection.endpoint
   end
