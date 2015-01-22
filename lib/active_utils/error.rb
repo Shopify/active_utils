@@ -1,14 +1,16 @@
 module ActiveUtils #:nodoc:
-  class ActiveUtilsError < StandardError #:nodoc:
+  class HTTPRequestError < StandardError #:nodoc:
   end
 
-  class ConnectionError < ActiveUtilsError # :nodoc:
+  ActiveUtilsError = HTTPRequestError #:nodoc:
+
+  class ConnectionError < HTTPRequestError # :nodoc:
   end
 
   class RetriableConnectionError < ConnectionError # :nodoc:
   end
 
-  class ResponseError < ActiveUtilsError # :nodoc:
+  class ResponseError < HTTPRequestError # :nodoc:
     attr_reader :response
 
     def initialize(response, message = nil)
@@ -21,9 +23,9 @@ module ActiveUtils #:nodoc:
     end
   end
 
-  class ClientCertificateError < ActiveUtilsError # :nodoc
+  class ClientCertificateError < HTTPRequestError # :nodoc
   end
 
-  class InvalidResponseError < ActiveUtilsError # :nodoc
+  class InvalidResponseError < HTTPRequestError # :nodoc
   end
 end

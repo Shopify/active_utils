@@ -3,6 +3,9 @@ require 'active_support/core_ext/hash/indifferent_access'
 require 'active_support/core_ext/hash/conversions'
 require 'active_support/core_ext/class/attribute'
 
+require 'active_utils/error'
+require 'active_utils/version'
+
 module ActiveUtils
   autoload :NetworkConnectionRetries,  'active_utils/network_connection_retries'
   autoload :Connection,                'active_utils/connection'
@@ -10,12 +13,6 @@ module ActiveUtils
   autoload :CountryCode,               'active_utils/country'
   autoload :InvalidCountryCodeError,   'active_utils/country'
   autoload :CountryCodeFormatError,    'active_utils/country'
-  autoload :ActiveUtilsError,          'active_utils/error'
-  autoload :ConnectionError,           'active_utils/error'
-  autoload :RetriableConnectionError,  'active_utils/error'
-  autoload :ResponseError,             'active_utils/error'
-  autoload :ClientCertificateError,    'active_utils/error'
-  autoload :InvalidResponseError,      'active_utils/error'
   autoload :PostData,                  'active_utils/post_data'
   autoload :PostsData,                 'active_utils/posts_data'
   autoload :RequiresParameters,        'active_utils/requires_parameters'
