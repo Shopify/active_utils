@@ -124,6 +124,24 @@ class ConnectionTest < Minitest::Test
     assert_equal "/bogus", @connection.send(:http).ca_path
   end
 
+  def test_default_proxy_address_is_nil
+    assert_equal nil, @connection.proxy_address
+  end
+
+  def test_default_proxy_port_is_nil
+    assert_equal nil, @connection.proxy_port
+  end
+
+  def test_override_proxy_address
+    @connection.proxy_address = "http://proxy.example.com"
+    assert_equal "http://proxy.example.com", @connection.proxy_address
+  end
+
+  def test_override_proxy_port
+    @connection.proxy_port = "8888"
+    assert_equal "8888", @connection.proxy_port
+  end
+
   def test_unrecoverable_exception
     @connection.logger.expects(:info).once
     Net::HTTP.any_instance.expects(:post).raises(EOFError)

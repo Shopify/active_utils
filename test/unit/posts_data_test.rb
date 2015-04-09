@@ -55,4 +55,10 @@ class PostsDataTest < Minitest::Test
     @poster.raw_ssl_request(:post, "https://shopify.com", "", {})
   end
 
+  def test_set_proxy_address_and_port
+    SSLPoster.proxy_address = 'http://proxy.example.com'
+    SSLPoster.proxy_port = '8888'
+    assert_equal @poster.proxy_address, 'http://proxy.example.com'
+    assert_equal @poster.proxy_port, '8888'
+  end
 end
