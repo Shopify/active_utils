@@ -262,6 +262,7 @@ module ActiveUtils #:nodoc:
       { :alpha2 => 'SC', :name => 'Seychelles', :alpha3 => 'SYC', :numeric => '690' },
       { :alpha2 => 'SL', :name => 'Sierra Leone', :alpha3 => 'SLE', :numeric => '694' },
       { :alpha2 => 'SG', :name => 'Singapore', :alpha3 => 'SGP', :numeric => '702' },
+      { :alpha2 => 'SX', :name => 'Sint Maarten (Netherlands Part)', :alpha3 => 'SXM', :numberic => '534' },
       { :alpha2 => 'SK', :name => 'Slovakia', :alpha3 => 'SVK', :numeric => '703' },
       { :alpha2 => 'SI', :name => 'Slovenia', :alpha3 => 'SVN', :numeric => '705' },
       { :alpha2 => 'SB', :name => 'Solomon Islands', :alpha3 => 'SLB', :numeric => '090' },
