@@ -1,5 +1,8 @@
 # ActiveUtils changelog
 
+### Version 3.2.0 (Oct. 13, 2015)
+- Add #uses_postal_codes? to `ActiveUtils::Country`
+
 ### Version 3.1.0 (Sept. 30, 2015)
 - Use ActiveUtils::HTTPRequestError as base exception class
 - Add proxy address and port configuration

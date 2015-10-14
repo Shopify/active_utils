@@ -313,6 +313,16 @@ module ActiveUtils #:nodoc:
       { :alpha2 => 'AX', :name => 'Åland Islands', :alpha3 => 'ALA', :numeric => '248' }
     ]
 
+    COUNTRIES_THAT_DO_NOT_USE_POSTALCODES = %w(
+      QA BZ BS BF BJ AG AE AI AO AW HK
+      FJ ML JM ZW YE UG TV TT TG TD PA
+      CW
+    )
+
+    def uses_postal_codes?
+      !COUNTRIES_THAT_DO_NOT_USE_POSTALCODES.include?(code(:alpha2).value)
+    end
+
     def self.find(name)
       raise InvalidCountryCodeError, "Cannot lookup country for an empty name" if name.blank?
 

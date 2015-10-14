@@ -65,4 +65,13 @@ class CountryTest < Minitest::Test
     assert_equal(country_names.sort, country_names)
   end
 
+  def test_canada_uses_postal_codes
+    canada = Country.find('Canada')
+    assert canada.uses_postal_codes?
+  end
+
+  def test_qatar_does_not_use_postal_codes
+    qatar = Country.find('Qatar')
+    refute qatar.uses_postal_codes?
+  end
 end
