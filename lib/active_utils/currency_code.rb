@@ -29,6 +29,7 @@ module ActiveUtils
       "NMP" => "MXN", # Mexican Pesos
       "NTD" => "TWD", # New Taiwan Dollars / Taiwan New Dollars
       "RDD" => "DOP", # Dominican Pesos
+      "RM" => "MYR",  # Malaysia Ringgit
       "RMB" => "CNY", # Chinese Renminbi
       "SFR" => "CHF", # Swiss Francs
       "SID" => "SGD", # Singapore Dollars
