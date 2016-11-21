@@ -149,6 +149,24 @@ class NetworkConnectionRetriesTest < Minitest::Test
     end
   end
 
+  def test_delay_between_retries
+    @requester.expects(:post).times(2).raises(EOFError).then.returns(@ok)
+    Kernel.expects(sleep: 0.5)
+
+    retry_exceptions retry_safe: true, delay: 0.5 do
+      @requester.post
+    end
+  end
+
+  def test_no_delay_without_specified_option
+    @requester.expects(:post).times(2).raises(EOFError).then.returns(@ok)
+    Kernel.expects(sleep: 0.5).never
+
+    retry_exceptions retry_safe: true do
+      @requester.post
+    end
+  end
+
   def test_failure_with_ssl_certificate
     @requester.expects(:post).raises(OpenSSL::X509::CertificateError)
 
