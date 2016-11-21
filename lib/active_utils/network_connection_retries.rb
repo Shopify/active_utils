@@ -49,12 +49,18 @@ module ActiveUtils
         retries -= 1
 
         log_with_retry_details(options[:logger], initial_retries-retries, Time.now.to_f - request_start, e.message, options[:tag])
-        retry unless retries.zero?
+        unless retries.zero?
+          Kernel.sleep(options[:delay]) if options[:delay]
+          retry
+        end
         raise ActiveUtils::ConnectionError, e.message
       rescue ActiveUtils::ConnectionError, ActiveUtils::InvalidResponseError => e
         retries -= 1
         log_with_retry_details(options[:logger], initial_retries-retries, Time.now.to_f - request_start, e.message, options[:tag])
-        retry if (options[:retry_safe] || retry_safe) && !retries.zero?
+        if (options[:retry_safe] || retry_safe) && !retries.zero?
+          Kernel.sleep(options[:delay]) if options[:delay]
+          retry
+        end
         raise
       end
     end
