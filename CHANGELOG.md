@@ -1,5 +1,8 @@
 # ActiveUtils changelog
 
+### Version 3.2.3 (Nov. 21, 2016)
+- Add the `:delay` option in `ActiveUtils::NetworkConnectionRetries`
+
 ### Version 3.2.0 (Oct. 13, 2015)
 - Add #uses_postal_codes? to `ActiveUtils::Country`
 
