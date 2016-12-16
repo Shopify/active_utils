@@ -88,6 +88,7 @@ module ActiveUtils #:nodoc:
       { :alpha2 => 'BM', :name => 'Bermuda', :alpha3 => 'BMU', :numeric => '060' },
       { :alpha2 => 'BT', :name => 'Bhutan', :alpha3 => 'BTN', :numeric => '064' },
       { :alpha2 => 'BO', :name => 'Bolivia', :alpha3 => 'BOL', :numeric => '068' },
+      { :alpha2 => 'BQ', :name => 'Bonaire, Sint Eustatius and Saba', :alpha3 => 'BES', :numeric => '535' },
       { :alpha2 => 'BA', :name => 'Bosnia and Herzegovina', :alpha3 => 'BIH', :numeric => '070' },
       { :alpha2 => 'BW', :name => 'Botswana', :alpha3 => 'BWA', :numeric => '072' },
       { :alpha2 => 'BV', :name => 'Bouvet Island', :alpha3 => 'BVD', :numeric => '074' },
