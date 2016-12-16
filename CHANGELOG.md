@@ -1,5 +1,8 @@
 # ActiveUtils changelog
 
+### Version 3.2.4 (Dec. 16, 2016)
+- Add the `Bonaire` country in `ActiveUtils::Country::COUNTRIES`
+
 ### Version 3.2.3 (Nov. 21, 2016)
 - Add the `:delay` option in `ActiveUtils::NetworkConnectionRetries`
 
