@@ -11,8 +11,8 @@ module ActiveUtils
       "KHR", "KRW", "KWD", "KYD", "KZT", "LBP", "LKR", "LTL", "LVL", "MAD", "MDL", "MGA", "MKD", "MMK",
       "MNT", "MOP", "MUR", "MVR", "MXN", "MYR", "MZN", "NAD", "NGN", "NIO", "NOK", "NPR", "NZD", "OMR",
       "PEN", "PGK", "PHP", "PKR", "PLN", "PYG", "QAR", "RON", "RSD", "RUB", "RWF", "SAR", "SCR", "SEK",
-      "SGD", "STD", "SYP", "THB", "TND", "TRY", "TTD", "TWD", "TZS", "UAH", "UGX", "USD", "UYU", "VEF",
-      "VND", "VUV", "WST", "XAF", "XCD", "XOF", "XPF", "ZAR", "ZMW"
+      "SGD", "STD", "SYP", "THB", "TMT", "TND", "TRY", "TTD", "TWD", "TZS", "UAH", "UGX", "USD", "UYU",
+      "VEF", "VND", "VUV", "WST", "XAF", "XCD", "XOF", "XPF", "ZAR", "ZMW"
     ]
 
     NON_ISO_TO_ISO = {
