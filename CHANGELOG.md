@@ -1,5 +1,8 @@
 # ActiveUtils changelog
 
+### Version 3.2.5 (Feb. 2, 2017)
+- Add the `TMT` currency in the supported currency codes
+
 ### Version 3.2.4 (Dec. 16, 2016)
 - Add the `Bonaire` country in `ActiveUtils::Country::COUNTRIES`
 
