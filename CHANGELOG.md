@@ -1,5 +1,8 @@
 # ActiveUtils changelog
 
+### Unrelease
+- Reduced default PostsData open_timeout from 60 seconds to 2, and read_timeout from 60 seconds to 10. Subclasses can and should override those values.
+
 ### Version 3.2.5 (Feb. 2, 2017)
 - Add the `TMT` currency in the supported currency codes
 
