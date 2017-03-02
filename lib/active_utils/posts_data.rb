@@ -12,10 +12,10 @@ module ActiveUtils #:nodoc:
       base.retry_safe = false
 
       base.class_attribute :open_timeout
-      base.open_timeout = 60
+      base.open_timeout = 2
 
       base.class_attribute :read_timeout
-      base.read_timeout = 60
+      base.read_timeout = 10
 
       base.class_attribute :max_retries
       base.max_retries = Connection::MAX_RETRIES
