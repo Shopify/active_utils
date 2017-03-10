@@ -1,7 +1,8 @@
 # ActiveUtils changelog
 
-### Unrelease
+### Version 3.2.6 (Mar. 10, 2017)
 - Reduced default PostsData open_timeout from 60 seconds to 2, and read_timeout from 60 seconds to 10. Subclasses can and should override those values.
+- Replace Kosovo's alpha 2 and alpha 3 ISO codes from `KV` to `XK` and from `KSV` to `XKX`.
 
 ### Version 3.2.5 (Feb. 2, 2017)
 - Add the `TMT` currency in the supported currency codes
