@@ -1,5 +1,8 @@
 # ActiveUtils changelog
 
+### Version 3.3.1 (Mar. 28, 2017)
+- Bump ActiveSupport requirement to **< 5.2.0**.
+
 ### Version 3.3.0 (Mar. 10, 2017)
 - Reduced default PostsData open_timeout from 60 seconds to 2, and read_timeout from 60 seconds to 10. Subclasses can and should override those values.
 - Replace Kosovo's alpha 2 and alpha 3 ISO codes from `KV` to `XK` and from `KSV` to `XKX`.
