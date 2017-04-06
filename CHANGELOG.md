@@ -1,5 +1,8 @@
 # ActiveUtils changelog
 
+### Version 3.3.2 (Mar. 28, 2017)
+- Changed country name of "Libyan Arab Jamahiriya" to Libya, as per country name change in 2011.
+
 ### Version 3.3.1 (Mar. 28, 2017)
 - Bump ActiveSupport requirement to **< 5.2.0**.
 
