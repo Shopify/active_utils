@@ -64,6 +64,7 @@ module ActiveUtils #:nodoc:
 
     COUNTRIES = [
       { :alpha2 => 'AF', :name => 'Afghanistan', :alpha3 => 'AFG', :numeric => '004' },
+      { :alpha2 => 'AX', :name => 'Aland Islands', :alpha3 => 'ALA', :numeric => '248' },
       { :alpha2 => 'AL', :name => 'Albania', :alpha3 => 'ALB', :numeric => '008' },
       { :alpha2 => 'DZ', :name => 'Algeria', :alpha3 => 'DZA', :numeric => '012' },
       { :alpha2 => 'AS', :name => 'American Samoa', :alpha3 => 'ASM', :numeric => '016' },
