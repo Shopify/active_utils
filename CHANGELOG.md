@@ -1,5 +1,8 @@
 # ActiveUtils changelog
 
+### Version 3.3.3 (Apr. 7, 2017)
+- Add the `Aland Islands` country in `ActiveUtils::Country::COUNTRIES`
+
 ### Version 3.3.2 (Mar. 28, 2017)
 - Changed country name of "Libyan Arab Jamahiriya" to Libya, as per country name change in 2011.
 
