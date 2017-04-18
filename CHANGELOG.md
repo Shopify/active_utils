@@ -1,5 +1,8 @@
 # ActiveUtils changelog
 
+### Version 3.3.4 (Apr. 18, 2017)
+- Add `Ghana` country in `ActiveUtils::Country::COUNTRIES_THAT_DO_NOT_USE_POSTALCODES`
+
 ### Version 3.3.3 (Apr. 7, 2017)
 - Add the `Aland Islands` country in `ActiveUtils::Country::COUNTRIES`
 
