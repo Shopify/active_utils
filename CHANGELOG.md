@@ -1,5 +1,8 @@
 # ActiveUtils changelog
 
+### Version 3.3.5 (May 18, 2017)
+- Add `South Sudan` and `Antarctica` countries in `ActiveUtils::Country::COUNTRIES`
+
 ### Version 3.3.4 (Apr. 18, 2017)
 - Add `Ghana` country in `ActiveUtils::Country::COUNTRIES_THAT_DO_NOT_USE_POSTALCODES`
 
