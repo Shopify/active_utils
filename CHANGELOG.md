@@ -1,5 +1,8 @@
 # ActiveUtils changelog
 
+### Version 3.3.7 (June 26, 2017)
+- Add `CVE` to `ActiveUtils::CurrencyCode::ISO_CURRENCIES`
+
 ### Version 3.3.6 (May 23, 2017)
 - Add `South Sudan` country in `ActiveUtils::Country::COUNTRIES_THAT_DO_NOT_USE_POSTALCODES`
 
