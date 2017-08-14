@@ -320,7 +320,7 @@ module ActiveUtils #:nodoc:
     COUNTRIES_THAT_DO_NOT_USE_POSTALCODES = %w(
       QA BZ BS BF BJ AG AE AI AO AW HK
       FJ ML JM ZW YE UG TV TT TG TD PA
-      CW GH SS
+      CW GH SS BO
     )
 
     def uses_postal_codes?
