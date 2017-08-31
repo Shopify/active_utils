@@ -41,14 +41,14 @@ module ActiveUtils
       request_start = nil
 
       begin
-        request_start = Time.now.to_f
+        request_start = Process.clock_gettime(Process::CLOCK_MONOTONIC)
         result = yield
-        log_with_retry_details(options[:logger], initial_retries-retries + 1, Time.now.to_f - request_start, "success", options[:tag])
+        log_with_retry_details(options[:logger], initial_retries-retries + 1, Process.clock_gettime(Process::CLOCK_MONOTONIC) - request_start, "success", options[:tag])
         result
       rescue ActiveUtils::RetriableConnectionError => e
         retries -= 1
 
-        log_with_retry_details(options[:logger], initial_retries-retries, Time.now.to_f - request_start, e.message, options[:tag])
+        log_with_retry_details(options[:logger], initial_retries-retries, Process.clock_gettime(Process::CLOCK_MONOTONIC) - request_start, e.message, options[:tag])
         unless retries.zero?
           Kernel.sleep(options[:delay]) if options[:delay]
           retry
@@ -56,7 +56,7 @@ module ActiveUtils
         raise ActiveUtils::ConnectionError, e.message
       rescue ActiveUtils::ConnectionError, ActiveUtils::InvalidResponseError => e
         retries -= 1
-        log_with_retry_details(options[:logger], initial_retries-retries, Time.now.to_f - request_start, e.message, options[:tag])
+        log_with_retry_details(options[:logger], initial_retries-retries, Process.clock_gettime(Process::CLOCK_MONOTONIC) - request_start, e.message, options[:tag])
         if (options[:retry_safe] || retry_safe) && !retries.zero?
           Kernel.sleep(options[:delay]) if options[:delay]
           retry
