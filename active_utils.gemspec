@@ -14,7 +14,8 @@ Gem::Specification.new do |s|
 
   s.rubyforge_project = "active_utils"
 
-  s.add_dependency('activesupport', '>= 3.2', '< 5.2.0')
+  s.required_ruby_version = '>= 2.2'
+  s.add_dependency('activesupport', '>= 4.2', '< 5.2.0')
   s.add_dependency('i18n')
 
   s.add_development_dependency('rake')
