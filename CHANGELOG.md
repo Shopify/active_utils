@@ -1,5 +1,9 @@
 # ActiveUtils changelog
 
+### Version 3.3.9 (September 28, 2017)
+- Add remaining currencies to `ActiveUtils::CurrencyCode::ISO_CURRENCIES`
+- Update bundler in `travis.yml`
+
 ### Version 3.3.8 (August 15, 2017)
 - Add `BO` to `ActiveUtils::Country::COUNTRIES_THAT_DO_NOT_USE_POSTALCODES`
 

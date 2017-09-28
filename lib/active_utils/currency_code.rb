@@ -4,15 +4,19 @@ module ActiveUtils
 
   class CurrencyCode
     ISO_CURRENCIES = [
-      "AED", "ALL", "AMD", "ANG", "AOA", "ARS", "AUD", "AWG", "AZN", "BAM", "BBD", "BDT", "BGN", "BHD",
-      "BND", "BOB", "BRL", "BSD", "BTN", "BWP", "BYR", "BZD", "CAD", "CDF", "CHF", "CLP", "CNY", "COP",
-      "CRC", "CVE", "CZK", "DKK", "DOP", "DZD", "EGP", "ETB", "EUR", "FJD", "GBP", "GEL", "GHS", "GMD",
-      "GTQ", "GYD", "HKD", "HNL", "HRK", "HUF", "IDR", "ILS", "INR", "ISK", "JEP", "JMD", "JOD", "JPY",
-      "KES", "KGS", "KHR", "KRW", "KWD", "KYD", "KZT", "LBP", "LKR", "LTL", "LVL", "MAD", "MDL", "MGA",
-      "MKD", "MMK", "MNT", "MOP", "MUR", "MVR", "MXN", "MYR", "MZN", "NAD", "NGN", "NIO", "NOK", "NPR",
-      "NZD", "OMR", "PEN", "PGK", "PHP", "PKR", "PLN", "PYG", "QAR", "RON", "RSD", "RUB", "RWF", "SAR",
-      "SCR", "SEK", "SGD", "STD", "SYP", "THB", "TMT", "TND", "TRY", "TTD", "TWD", "TZS", "UAH", "UGX",
-      "USD", "UYU", "VEF", "VND", "VUV", "WST", "XAF", "XCD", "XOF", "XPF", "ZAR", "ZMW", 
+      "AED", "AFN", "ALL", "AMD", "ANG", "AOA", "ARS", "AUD", "AWG", "AZN", "BAM", "BBD", "BDT", "BGN",
+      "BHD", "BIF", "BMD", "BND", "BOB", "BOV", "BRL", "BSD", "BTN", "BWP", "BYR", "BYN", "BZD", "CAD",
+      "CDF", "CHE", "CHF", "CHW", "CLP", "CLF", "CNY", "COP", "COU", "CRC", "CUC", "CUP", "CVE", "CZK",
+      "DKK", "DJF", "DOP", "DZD", "EGP", "ERN", "ETB", "EUR", "FJD", "FKP", "GBP", "GEL", "GHS", "GIP",
+      "GMD", "GNF", "GTQ", "GYD", "HKD", "HNL", "HRK", "HTG", "HUF", "IDR", "ILS", "INR", "IRR", "ISK",
+      "IQD", "JEP", "JMD", "JOD", "JPY", "KES", "KGS", "KHR", "KMF", "KPY", "KRW", "KWD", "KYD", "KZT",
+      "LAK", "LBP", "LKR", "LRD", "LSL", "LTL", "LVL", "LYD", "MAD", "MDL", "MGA", "MKD", "MMK", "MNT",
+      "MOP", "MRO", "MUR", "MVR", "MWK", "MXN", "MXV", "MYR", "MZN", "NAD", "NGN", "NIO", "NOK", "NPR",
+      "NZD", "OMR", "PAB", "PEN", "PGK", "PHP", "PKR", "PLN", "PYG", "QAR", "RON", "RSD", "RUB", "RWF",
+      "SAR", "SBD", "SCR", "SDG", "SEK", "SGD", "SHP", "SLL", "SOS", "SRD", "SSP", "STD", "SVC", "SYP",
+      "SZL", "THB", "TJS", "TMT", "TND", "TOP", "TRY", "TTD", "TWD", "TZS", "UAH", "UGX", "USD", "USN",
+      "UYI", "UYU", "UZS", "VEF", "VND", "VUV", "WST", "XAF", "XAG", "XAU", "XBA", "XBB", "XBC", "XBD",
+      "XCD", "XDR", "XOF", "XPD", "XPF", "XPT", "XSU", "XTS", "XUA", "XXX", "YER", "ZAR", "ZMW", "ZWL"
     ]
 
     NON_ISO_TO_ISO = {
