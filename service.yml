@@ -1,0 +1,6 @@
+# https://services.shopify.io/services/active_utils/hackable
+director: dneufeld
+owners:
+- Shopify/admin-fed-primitives
+hackable:
+  classification: tier4
