@@ -17,12 +17,19 @@ gemfile:
 - gemfiles/Gemfile.activesupport41
 - gemfiles/Gemfile.activesupport42
 - gemfiles/Gemfile.activesupport50
+- gemfiles/Gemfile.activesupport52
 
 matrix:
   exclude:
     - rvm: "1.9"
       gemfile: gemfiles/Gemfile.activesupport50
+    - rvm: "1.9"
+      gemfile: gemfiles/Gemfile.activesupport52
     - rvm: "2.0"
       gemfile: gemfiles/Gemfile.activesupport50
+    - rvm: "2.0"
+      gemfile: gemfiles/Gemfile.activesupport52
     - rvm: "2.1"
       gemfile: gemfiles/Gemfile.activesupport50
+    - rvm: "2.1"
+      gemfile: gemfiles/Gemfile.activesupport52
