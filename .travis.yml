@@ -12,17 +12,17 @@ before_install:
 - gem update bundler
 
 gemfile:
-- Gemfile.activesupport32
-- Gemfile.activesupport40
-- Gemfile.activesupport41
-- Gemfile.activesupport42
-- Gemfile.activesupport50
+- gemfiles/Gemfile.activesupport32
+- gemfiles/Gemfile.activesupport40
+- gemfiles/Gemfile.activesupport41
+- gemfiles/Gemfile.activesupport42
+- gemfiles/Gemfile.activesupport50
 
 matrix:
   exclude:
     - rvm: "1.9"
-      gemfile: Gemfile.activesupport50
+      gemfile: gemfiles/Gemfile.activesupport50
     - rvm: "2.0"
-      gemfile: Gemfile.activesupport50
+      gemfile: gemfiles/Gemfile.activesupport50
     - rvm: "2.1"
-      gemfile: Gemfile.activesupport50
+      gemfile: gemfiles/Gemfile.activesupport50
