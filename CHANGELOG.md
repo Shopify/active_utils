@@ -1,5 +1,14 @@
 # ActiveUtils changelog
 
+### Version 3.3.12 (July 11, 2018)
+- Update CA bundle
+
+### Version 3.3.11 (March 14, 2018)
+- Add the DigiCert Global Root G2 to the CA bundle
+
+### Version 3.3.10 (February 28, 2018)
+- Support ActiveSupport 5.2
+
 ### Version 3.3.9 (September 28, 2017)
 - Add remaining currencies to `ActiveUtils::CurrencyCode::ISO_CURRENCIES`
 - Update bundler in `travis.yml`
