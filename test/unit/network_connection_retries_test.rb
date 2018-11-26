@@ -207,4 +207,12 @@ class NetworkConnectionRetriesTest < Minitest::Test
       end
     end
   end
+
+  def test_retries_with_custom_error_specified
+    @requester.expects(:post).times(2).raises(Errno::ETIMEDOUT).then.returns(@ok)
+
+    retry_exceptions retriable_exceptions: { Errno::ETIMEDOUT => "The connection to the remote server timed out"} do
+      @requester.post
+    end
+  end
 end
