@@ -10,18 +10,23 @@ module ActiveUtils
       OpenSSL::SSL::SSLError => "The SSL connection to the remote server could not be established"
     }
 
+    DEFAULT_RETRY_ERRORS = {
+      Errno::ECONNREFUSED => "The remote server refused the connection"
+    }
+
     def self.included(base)
       base.send(:attr_accessor, :retry_safe)
     end
 
     def retry_exceptions(options={})
       connection_errors = DEFAULT_CONNECTION_ERRORS.merge(options[:connection_exceptions] || {})
+      retry_errors = DEFAULT_RETRY_ERRORS.merge(options[:retriable_exceptions] || {})
 
       retry_network_exceptions(options) do
         begin
           yield
-        rescue Errno::ECONNREFUSED => e
-          raise ActiveUtils::RetriableConnectionError, "The remote server refused the connection"
+        rescue *retry_errors.keys => e
+          raise ActiveUtils::RetriableConnectionError, derived_error_message(retry_errors, e.class)
         rescue OpenSSL::X509::CertificateError => e
           NetworkConnectionRetries.log(options[:logger], :error, e.message, options[:tag])
           raise ActiveUtils::ClientCertificateError, "The remote server did not accept the provided SSL certificate"
