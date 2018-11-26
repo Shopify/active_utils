@@ -1,5 +1,8 @@
 # ActiveUtils changelog
 
+### Version 3.3.13 (November 26, 2018)
+- Add support for custom retriable exceptions in `NetworkConnectionRetries#retry_exceptions`
+
 ### Version 3.3.12 (July 11, 2018)
 - Update CA bundle
 
