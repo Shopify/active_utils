@@ -5,7 +5,10 @@ sudo: false
 rvm:
 - "2.0"
 - "2.1"
-- "2.2.2"
+- "2.2"
+- "2.3"
+- "2.4"
+- "2.5"
 
 before_install:
 - gem update bundler
@@ -14,6 +17,7 @@ gemfile:
 - gemfiles/Gemfile.activesupport42
 - gemfiles/Gemfile.activesupport50
 - gemfiles/Gemfile.activesupport52
+- gemfiles/Gemfile.activesupport-master
 
 matrix:
   exclude:
@@ -21,7 +25,15 @@ matrix:
       gemfile: gemfiles/Gemfile.activesupport50
     - rvm: "2.0"
       gemfile: gemfiles/Gemfile.activesupport52
+    - rvm: "2.0"
+      gemfile: gemfiles/Gemfile.activesupport-master
     - rvm: "2.1"
       gemfile: gemfiles/Gemfile.activesupport50
     - rvm: "2.1"
       gemfile: gemfiles/Gemfile.activesupport52
+    - rvm: "2.1"
+      gemfile: gemfiles/Gemfile.activesupport-master
+    - rvm: "2.2"
+      gemfile: gemfiles/Gemfile.activesupport-master
+    - rvm: "2.3"
+      gemfile: gemfiles/Gemfile.activesupport-master
