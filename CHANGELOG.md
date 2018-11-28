@@ -1,5 +1,8 @@
 # ActiveUtils changelog
 
+### Version 3.3.14 (November 28, 2018)
+- Add `MW` to `ActiveUtils::Country::COUNTRIES_THAT_DO_NOT_USE_POSTALCODES`
+
 ### Version 3.3.13 (November 26, 2018)
 - Add support for custom retriable exceptions in `NetworkConnectionRetries#retry_exceptions`
 
