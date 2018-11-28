@@ -65,6 +65,16 @@ class CountryTest < Minitest::Test
     assert_equal(country_names.sort, country_names)
   end
 
+  def test_countries_that_do_not_use_postalcodes_are_unique
+    country_codes = Country::COUNTRIES_THAT_DO_NOT_USE_POSTALCODES
+    assert_equal(country_codes.uniq.length, country_codes.length)
+  end
+
+  def test_change_to_countries_that_do_not_use_postalcodes_is_intentional
+    country_codes = Country::COUNTRIES_THAT_DO_NOT_USE_POSTALCODES
+    assert_equal(country_codes.length, 27)
+  end
+
   def test_canada_uses_postal_codes
     canada = Country.find('Canada')
     assert canada.uses_postal_codes?
