@@ -1,5 +1,8 @@
 # ActiveUtils changelog
 
+### Version 3.3.16 (December 18, 2018)
+- Add `VU` to `ActiveUtils::Country::COUNTRIES_THAT_DO_NOT_USE_POSTALCODES`
+
 ### Version 3.3.15 (November 29, 2018)
 - Remove support to Ruby 1.9 and ActiveSupport `< 4`
 - Remove the upperbound constraint on ActiveSupport
