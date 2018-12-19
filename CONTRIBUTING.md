@@ -29,5 +29,4 @@ Final note: maybe you should also update the mirrored version in ActiveMerchant.
 1. Check the [semantic versioning page](http://semver.org) for info on how to version the new release.
 2. Update the  `ActiveUtils::VERSION` constant in **lib/active_utils/version.rb**.
 3. Add a `CHANGELOG.md` entry for the new release with the date.
-4. Tag the release commit on GitHub: `bundle exec rake tag_release`
-5. Release the gem to rubygems using ShipIt
+4. Release the gem to rubygems using ShipIt (this will create tag/push during deploy)
