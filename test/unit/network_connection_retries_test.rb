@@ -48,13 +48,17 @@ class NetworkConnectionRetriesTest < Minitest::Test
     end
   end
 
-  def test_socket_error_raises_correctly
-    raised = assert_raises(ActiveUtils::ConnectionError) do
-      retry_exceptions do
-        raise SocketError
+  def test_connection_errors_raise_correctly
+    exceptions = [SocketError, Errno::EHOSTUNREACH]
+
+    exceptions.each do |exception|
+      raised = assert_raises(ActiveUtils::ConnectionError) do
+        retry_exceptions do
+          raise exception
+        end
       end
+      assert_equal "The connection to the remote server could not be established", raised.message
     end
-    assert_equal "The connection to the remote server could not be established", raised.message
   end
 
   def test_ssl_errors_raise_correctly
