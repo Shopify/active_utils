@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Shopify"]
   s.email       = ["developers@jadedpixel.com"]
-  s.homepage    = "http://github.com/shopify/active_utils"
+  s.homepage    = "https://github.com/shopify/active_utils"
   s.summary     = %q{Common utils used by active_merchant, active_fulfillment, and active_shipping}
   s.license     = 'MIT'
 
