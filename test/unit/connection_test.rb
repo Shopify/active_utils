@@ -49,6 +49,12 @@ class ConnectionTest < Minitest::Test
     assert_equal 'success', response.body
   end
 
+  def test_successful_patch_request
+    Net::HTTP.any_instance.expects(:patch).with('/tx.php', 'data', {}).returns(@ok)
+    response = @connection.request(:patch, 'data', {})
+    assert_equal 'success', response.body
+  end
+
   def test_successful_delete_request
     Net::HTTP.any_instance.expects(:delete).with('/tx.php', {}).returns(@ok)
     response = @connection.request(:delete, nil, {})
