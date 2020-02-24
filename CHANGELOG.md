@@ -1,5 +1,8 @@
 # ActiveUtils changelog
 
+### Version 3.3.17 (February 24, 2020)
+- Add support for PATCH HTTP method in `ActiveUtils#Connection`
+
 ### Version 3.3.16 (December 18, 2018)
 - Add `VU` to `ActiveUtils::Country::COUNTRIES_THAT_DO_NOT_USE_POSTALCODES`
 
