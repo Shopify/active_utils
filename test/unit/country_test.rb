@@ -72,7 +72,7 @@ class CountryTest < Minitest::Test
 
   def test_change_to_countries_that_do_not_use_postalcodes_is_intentional
     country_codes = Country::COUNTRIES_THAT_DO_NOT_USE_POSTALCODES
-    assert_equal(country_codes.length, 28)
+    assert_equal(country_codes.length, 31)
   end
 
   def test_canada_uses_postal_codes
