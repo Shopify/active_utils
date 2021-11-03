@@ -11,9 +11,12 @@ module ActiveUtils
     OPEN_TIMEOUT = 60
     READ_TIMEOUT = 60
     VERIFY_PEER = true
-    CA_FILE = (File.dirname(__FILE__) + '/../certs/cacert.pem')
+    # allow using proxy for https calls by pointing to it's certificate
+    # SSL_CERT_FILE is variable used by Ruby to look for certificate for net/http
+    CA_FILE = ENV.fetch('SSL_CERT_FILE', File.dirname(__FILE__) + '/../certs/cacert.pem')
     CA_PATH = nil
     RETRY_SAFE = false
+    PROXY_ADDRESS = :ENV
     RUBY_184_POST_HEADERS = { "Content-Type" => "application/x-www-form-urlencoded" }
 
     attr_accessor :endpoint
@@ -45,7 +48,7 @@ module ActiveUtils
       @max_retries  = MAX_RETRIES
       @ignore_http_status = false
       @ssl_version = nil
-      @proxy_address = nil
+      @proxy_address = PROXY_ADDRESS
       @proxy_port = nil
     end
 

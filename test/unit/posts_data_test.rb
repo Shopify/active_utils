@@ -61,4 +61,13 @@ class PostsDataTest < Minitest::Test
     assert_equal @poster.proxy_address, 'http://proxy.example.com'
     assert_equal @poster.proxy_port, '8888'
   end
+
+  class HttpConnectionAbort < StandardError; end
+
+  def test_respecting_environment_proxy_settings
+    Net::HTTP.stubs(:new).with('example.com', 80, :ENV, nil).raises(PostsDataTest::HttpConnectionAbort)
+    assert_raises(PostsDataTest::HttpConnectionAbort) do
+      @poster.ssl_post('http://example.com', '')
+    end
+  end
 end
