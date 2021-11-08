@@ -1,5 +1,9 @@
 # ActiveUtils changelog
 
+### Version 3.3.19 (February 24, 2020)
+- Support `net/http` default proxy settings from `ENV['http_proxy']`
+- Support usage of custom ssl certificate with `ENV['SSL_CERT_FILE']`, default variable for Ruby
+
 ### Version 3.3.17 (February 24, 2020)
 - Add support for PATCH HTTP method in `ActiveUtils#Connection`
 
