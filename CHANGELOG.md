@@ -1,5 +1,8 @@
 # ActiveUtils changelog
 
+### Version 3.4.0 (February 23, 2022)
+- Add AC and TA to `ActiveUtils::Country::COUNTRIES`
+
 ### Version 3.3.19 (February 24, 2020)
 - Support `net/http` default proxy settings from `ENV['http_proxy']`
 - Support usage of custom ssl certificate with `ENV['SSL_CERT_FILE']`, default variable for Ruby
