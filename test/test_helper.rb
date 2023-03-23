@@ -1,6 +1,6 @@
 require 'active_utils'
 require 'minitest/autorun'
-require 'mocha/setup'
+require 'mocha/minitest'
 
 include ActiveUtils
 

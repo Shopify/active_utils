@@ -46,6 +46,15 @@ class PostsDataTest < Minitest::Test
     @poster.raw_ssl_request(:post, "https://shopify.com", "", {})
   end
 
+  def test_logger_warns_can_handle_non_string_endpoints
+    @poster.logger = stub()
+    @poster.logger.expects(:warn).with("PostsDataTest::SSLPoster posting to plaintext endpoint, which is insecure")
+
+    Connection.any_instance.stubs(:request)
+
+    @poster.raw_ssl_request(:post, URI("http://shopify.com"), "", {})
+  end
+
   def test_logger_no_warning_if_ssl_strict_enabled
     @poster.logger = stub()
     @poster.logger.stubs(:warn).never
