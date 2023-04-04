@@ -1,5 +1,8 @@
 # ActiveUtils changelog
 
+### Version 3.4.1 (APril 04, 2023)
+- Fix depracated deprecated calling of `=~` on Object which is removed by ruby 3.2.0 as described here: https://bugs.ruby-lang.org/issues/15231
+
 ### Version 3.4.0 (February 23, 2022)
 - Add AC and TA to `ActiveUtils::Country::COUNTRIES`
 
