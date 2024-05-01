@@ -2,7 +2,6 @@ require 'test_helper'
 require 'active_support/core_ext/class'
 
 class PostsDataTest < Minitest::Test
-
   class SSLPoster
     include PostsData
 
@@ -44,6 +43,8 @@ class PostsDataTest < Minitest::Test
 
     SSLPoster.ssl_strict = false
     @poster.raw_ssl_request(:post, "https://shopify.com", "", {})
+  ensure
+    SSLPoster.ssl_strict = true
   end
 
   def test_logger_warns_can_handle_non_string_endpoints
@@ -65,10 +66,15 @@ class PostsDataTest < Minitest::Test
   end
 
   def test_set_proxy_address_and_port
+    original_proxy_address = SSLPoster.proxy_address
+    original_proxy_port = SSLPoster.proxy_port
     SSLPoster.proxy_address = 'http://proxy.example.com'
     SSLPoster.proxy_port = '8888'
     assert_equal @poster.proxy_address, 'http://proxy.example.com'
     assert_equal @poster.proxy_port, '8888'
+  ensure
+    SSLPoster.proxy_address = original_proxy_address
+    SSLPoster.proxy_port = original_proxy_port
   end
 
   class HttpConnectionAbort < StandardError; end
