@@ -12,6 +12,8 @@ Gem::Specification.new do |s|
   s.summary     = %q{Common utils used by active_merchant, active_fulfillment, and active_shipping}
   s.license     = 'MIT'
 
+  s.required_ruby_version = ">= 2.7"
+
   s.rubyforge_project = "active_utils"
 
   s.add_dependency('activesupport', '>= 4.2')

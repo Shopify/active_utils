@@ -11,7 +11,7 @@ class ConnectionTest < Minitest::Test
   end
 
   def test_path_to_cert_is_correct
-    assert File.exists?(ActiveUtils::Connection::CA_FILE)
+    assert File.file?(ActiveUtils::Connection::CA_FILE)
   end
 
   def test_connection_endpoint_parses_string_to_uri
@@ -130,8 +130,8 @@ class ConnectionTest < Minitest::Test
     assert_equal "/bogus", @connection.send(:http).ca_path
   end
 
-  def test_default_proxy_address_is_nil
-    assert_equal nil, @connection.proxy_address
+  def test_default_proxy_address_is_env
+    assert_equal :ENV, @connection.proxy_address
   end
 
   def test_default_proxy_port_is_nil
