@@ -40,7 +40,7 @@ module ActiveUtils #:nodoc:
     attr_reader :name
 
     def initialize(options = {})
-      requires!(options, :name, :alpha2, :alpha3, :numeric)
+      requires!(options, :name, :alpha2, :alpha3)
       @name = options.delete(:name)
       @codes = options.collect{|k,v| CountryCode.new(v)}
     end

@@ -84,4 +84,10 @@ class CountryTest < Minitest::Test
     qatar = Country.find('Qatar')
     refute qatar.uses_postal_codes?
   end
+
+  def test_find_country_without_numeric_code
+    country = Country.find('ASC')
+    assert_equal 'Ascension Island', country.to_s
+    assert_nil country.code(:numeric)
+  end
 end
