@@ -1,5 +1,8 @@
 # ActiveUtils changelog
 
+### Version 3.4.2 (January 15, 2025)
+- Remove numeric as a required param for `ActiveUtils::Country`
+
 ### Version 3.4.1 (APril 04, 2023)
 - Fix depracated deprecated calling of `=~` on Object which is removed by ruby 3.2.0 as described here: https://bugs.ruby-lang.org/issues/15231
 
