@@ -1,5 +1,8 @@
 # ActiveUtils changelog
 
+### Version 3.5.0 (February 04, 2025)
+- Catch and raise `EHOSTUNREACH` and `EADDRNOTAVAIL` syscall errors as `ActiveUtils::ConnectionError`
+
 ### Version 3.4.2 (January 15, 2025)
 - Remove numeric as a required param for `ActiveUtils::Country`
 
