@@ -32,6 +32,24 @@ class NetworkConnectionRetriesTest < Minitest::Test
     assert_equal "The remote server reset the connection", raised.message
   end
 
+  def test_ehostunreach_raises_correctly
+    raised = assert_raises(ActiveUtils::ConnectionError) do
+      retry_exceptions do
+        raise Errno::EHOSTUNREACH
+      end
+    end
+    assert_equal "The remote server could not be reached", raised.message
+  end
+
+  def test_eaddrnotavail_raises_correctly
+    raised = assert_raises(ActiveUtils::ConnectionError) do
+      retry_exceptions do
+        raise Errno::EADDRNOTAVAIL
+      end
+    end
+    assert_equal "The remote server address is not available", raised.message
+  end
+
   def test_timeout_errors_raise_correctly
     exceptions = [Timeout::Error, Errno::ETIMEDOUT]
     if RUBY_VERSION >= '2.0.0'
