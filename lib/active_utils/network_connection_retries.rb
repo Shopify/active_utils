@@ -9,7 +9,8 @@ module ActiveUtils
       SocketError            => "The connection to the remote server could not be established",
       OpenSSL::SSL::SSLError => "The SSL connection to the remote server could not be established",
       Errno::EHOSTUNREACH    => "The remote server could not be reached",
-      Errno::EADDRNOTAVAIL   => "The remote server address is not available"
+      Errno::EADDRNOTAVAIL => "The remote server address is not available",
+      Errno::ENETUNREACH     => "The destination network is unreachable"
     }
 
     DEFAULT_RETRY_ERRORS = {
