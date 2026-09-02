@@ -1,5 +1,9 @@
 # ActiveUtils changelog
 
+### Version 3.6.1 (September 02, 2026)
+
+- Update the curl domain in the `update_cert_file` rake task and update the vendored CA certificate
+
 ### Version 3.6.0 (September 15, 2025)
 
 - Catch and raise `Errno::ENETUNREACH` syscall errors as `ActiveUtils::ConnectionError`
