@@ -13,7 +13,7 @@ desc "Update the built-in CA root certificate file"
 task :update_cert_file do
   require 'net/http'
   require 'uri'
-  cert_uri = URI('http://curl.haxx.se/ca/cacert.pem')
+  cert_uri = URI('https://curl.se/ca/cacert.pem')
   response = Net::HTTP.get_response(cert_uri)
   if response.code == '200'
     cert_path = File.expand_path('../lib/certs/cacert.pem', __FILE__)
