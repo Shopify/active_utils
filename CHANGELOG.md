@@ -1,5 +1,9 @@
 # ActiveUtils changelog
 
+### Version 3.6.2 (October 21, 2026)
+
+- Address CVE-2026-111943 and SI-3057 by removing compromised emSign CA roots from the vendored CA bundle
+
 ### Version 3.6.1 (September 02, 2026)
 
 - Update the curl domain in the `update_cert_file` rake task and update the vendored CA certificate
